@@ -1,0 +1,1823 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.14
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 18-11-2015 a las 17:12:56
+-- Versión del servidor: 5.6.26
+-- Versión de PHP: 5.5.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `moodle`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assign`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assign` (
+  `id` bigint(10) NOT NULL,
+  `course` bigint(10) NOT NULL DEFAULT '0',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `intro` longtext NOT NULL,
+  `introformat` smallint(4) NOT NULL DEFAULT '0',
+  `alwaysshowdescription` tinyint(2) NOT NULL DEFAULT '0',
+  `nosubmissions` tinyint(2) NOT NULL DEFAULT '0',
+  `submissiondrafts` tinyint(2) NOT NULL DEFAULT '0',
+  `sendnotifications` tinyint(2) NOT NULL DEFAULT '0',
+  `sendlatenotifications` tinyint(2) NOT NULL DEFAULT '0',
+  `duedate` bigint(10) NOT NULL DEFAULT '0',
+  `allowsubmissionsfromdate` bigint(10) NOT NULL DEFAULT '0',
+  `grade` bigint(10) NOT NULL DEFAULT '0',
+  `timemodified` bigint(10) NOT NULL DEFAULT '0',
+  `requiresubmissionstatement` tinyint(2) NOT NULL DEFAULT '0',
+  `completionsubmit` tinyint(2) NOT NULL DEFAULT '0',
+  `cutoffdate` bigint(10) NOT NULL DEFAULT '0',
+  `teamsubmission` tinyint(2) NOT NULL DEFAULT '0',
+  `requireallteammemberssubmit` tinyint(2) NOT NULL DEFAULT '0',
+  `teamsubmissiongroupingid` bigint(10) NOT NULL DEFAULT '0',
+  `blindmarking` tinyint(2) NOT NULL DEFAULT '0',
+  `revealidentities` tinyint(2) NOT NULL DEFAULT '0',
+  `attemptreopenmethod` varchar(10) NOT NULL DEFAULT 'none',
+  `maxattempts` mediumint(6) NOT NULL DEFAULT '-1',
+  `markingworkflow` tinyint(2) NOT NULL DEFAULT '0',
+  `markingallocation` tinyint(2) NOT NULL DEFAULT '0',
+  `sendstudentnotifications` tinyint(2) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8 COMMENT='This table saves information about an instance of mod_assign';
+
+--
+-- Volcado de datos para la tabla `mdl_assign`
+--
+
+INSERT INTO `mdl_assign` (`id`, `course`, `name`, `intro`, `introformat`, `alwaysshowdescription`, `nosubmissions`, `submissiondrafts`, `sendnotifications`, `sendlatenotifications`, `duedate`, `allowsubmissionsfromdate`, `grade`, `timemodified`, `requiresubmissionstatement`, `completionsubmit`, `cutoffdate`, `teamsubmission`, `requireallteammemberssubmit`, `teamsubmissiongroupingid`, `blindmarking`, `revealidentities`, `attemptreopenmethod`, `maxattempts`, `markingworkflow`, `markingallocation`, `sendstudentnotifications`) VALUES
+(1, 6, 'Tarea 1', '<p>Agregar sus archivos de tarea</p>', 1, 1, 0, 0, 0, 0, 1432440000, 1429243200, 100, 1430841471, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(2, 8, 'tarea 2.1', '<p>Descripcion de redes</p>', 1, 1, 0, 0, 0, 0, 1431993600, 1431388800, 100, 1431456310, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(3, 8, 'Monitoreo', '<p>Realizar un monitoreo</p>', 1, 1, 0, 0, 0, 0, 1445706000, 1445126400, 30, 1446237964, 0, 0, 0, 0, 0, 0, 0, 0, 'manual', 1, 0, 0, 1),
+(4, 6, 'DiseÃ±o', '<p>DiseÃ±o de la pagina anterior</p>', 1, 1, 0, 0, 0, 0, 1451692800, 1441152000, 100, 1443039117, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(5, 6, 'Css responsivo', 'Se tendrÃ¡ que realizar el css para movil', 1, 1, 0, 0, 0, 0, 1444176000, 1441238400, 100, 1443035897, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(6, 8, 'Cuestionario de Protocolos', '<p>Crear 10 pregunas sobre los protocolos de redes.</p>', 1, 1, 0, 0, 0, 0, 1443193200, 1443052800, 100, 1443109714, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(11, 8, 'otra tareita', 'Es otra tareita', 1, 1, 0, 0, 0, 0, 1445930336, 1445817600, 100, 1444930336, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(8, 8, 'TAREITA 3', 'MI TAREITA 2', 1, 1, 0, 0, 0, 0, 1445706000, 1445126400, 100, 1445017790, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(9, 8, '7 capas', 'InvestigaciÃ³n de las 7 capas', 1, 1, 0, 0, 0, 0, 1446184800, 1445058000, 100, 1445018964, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(10, 8, 'otra tarea', '<p>tareita</p>', 1, 1, 0, 0, 0, 0, 1448949600, 1444971600, 100, 1445019361, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(12, 8, 'a', 's', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445628704, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(13, 8, 'a', 's', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445628727, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(14, 8, 'dddddd', 'ffffffffffff', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445628749, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(15, 8, 'dddddd', 'ffffffffffff', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445628751, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(16, 8, 'hkhkk', 'oooooo', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445629234, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(17, 8, '', '', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445629809, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(18, 8, 'tarea 67', 'xxxxxxxxxx', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445629829, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(19, 8, 'thytht', 't65iu6', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445630083, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(20, 8, 'ol', 'lllll', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445631356, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(21, 8, 'EEEEEE', 'TTTTTTTTTTT', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445631597, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(22, 8, 'qqqqqqqqqqqqqq', 'wwwwwwwwwwwwwwwww', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445631779, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(23, 8, 'sssss', 'dddddddd', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445631843, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(24, 8, '', '', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445631879, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(25, 8, 'ooooooooo', '', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445632015, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(26, 8, 'jkku', '', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445632081, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(27, 8, 'ttttttt', 'yyyyyyyy', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445632380, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(28, 8, '3ww', 'ws', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445632517, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(29, 8, '3w', 'ws', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445632561, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(30, 8, '', '', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445632594, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(31, 8, 'yu', 'yu', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445632722, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(32, 8, 'hjjjjl', 'lll', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445635824, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(33, 8, 'h', 'j', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445636483, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(34, 8, 'holasssssssssssss', 'j', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445636496, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(35, 8, 'ty', 'ui', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445636684, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(36, 8, 'uuuuuuuuuuu', 'iiiiiiiii', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445636879, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(37, 8, 'tu', 'yo', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445637009, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(38, 8, 'qw', 'ee', 1, 1, 0, 0, 0, 0, 1448024400, 1445346000, 100, 1445637171, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(39, 8, 'popoopopo', '', 1, 1, 0, 0, 0, 0, 11111111, 1445346000, 100, 1445638517, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(40, 8, '', '', 1, 1, 0, 0, 0, 0, 11111111, 1445346000, 100, 1445638662, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(41, 8, '', '', 1, 1, 0, 0, 0, 0, 11111111, 1445346000, 100, 1445638706, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(42, 8, '', '', 1, 1, 0, 0, 0, 0, 11111111, 1445346000, 100, 1445638821, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(43, 8, '', '', 1, 1, 0, 0, 0, 0, 11111111, 1445346000, 100, 1445638967, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(44, 8, 'holita', '2345', 1, 1, 0, 0, 0, 0, 1446278220, 1445713140, 98, 1445639160, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(45, 8, '', '', 1, 1, 0, 0, 0, 0, 946702800, 946702800, 100, 1445882772, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(46, 8, '', '', 1, 1, 0, 0, 0, 0, 946702800, 946702800, 100, 1445884524, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(47, 8, '', '', 1, 1, 0, 0, 0, 0, 946702800, 946702800, 100, 1445884575, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(48, 8, '', '', 1, 1, 0, 0, 0, 0, 946702800, 946702800, 100, 1445884664, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(49, 8, '', '', 1, 1, 0, 0, 0, 0, 946702800, 946702800, 100, 1445885613, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(50, 8, '', '', 1, 1, 0, 0, 0, 0, 946702800, 946702800, 100, 1445885614, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(51, 8, 'dsxeddc', '', 1, 1, 0, 0, 0, 0, 946702800, 946702800, 100, 1445885637, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(52, 11, 'tarea creada en novedades de  mantenimiento', 'mantenimiento tarea 1', 1, 1, 0, 0, 0, 0, 1448863200, 1445925000, 100, 1445964759, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(53, 8, 'rrrrrrrrr', '', 1, 1, 0, 0, 0, 0, 946702800, 946702800, 87, 1446059372, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1),
+(54, 8, 'tarea intentos', '<p>zzzzzzzzzzzzzzz</p>', 1, 1, 0, 0, 0, 0, 1449381600, 1446184800, 100, 1446234214, 0, 0, 0, 0, 0, 0, 0, 0, 'manual', 1, 0, 0, 1),
+(55, 8, 'tarea con 2 intentos', '2 intentos', 1, 1, 0, 0, 0, 0, 1446012000, 1445925600, 100, 1446237514, 0, 0, 0, 0, 0, 0, 0, 0, 'manual', 2, 0, 0, 1),
+(56, 8, 'tarea con archivo', '<p>archivo</p>', 1, 1, 0, 0, 0, 0, 1449813600, 1446616800, 100, 1446670217, 0, 0, 0, 0, 0, 0, 0, 0, 'none', -1, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignfeedback_comments`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_comments` (
+  `id` bigint(10) NOT NULL,
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `grade` bigint(10) NOT NULL DEFAULT '0',
+  `commenttext` longtext,
+  `commentformat` smallint(4) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='Text feedback for submitted assignments';
+
+--
+-- Volcado de datos para la tabla `mdl_assignfeedback_comments`
+--
+
+INSERT INTO `mdl_assignfeedback_comments` (`id`, `assignment`, `grade`, `commenttext`, `commentformat`) VALUES
+(1, 1, 1, '', 1),
+(2, 1, 2, '', 1),
+(3, 2, 3, 'esta muy mal', 0),
+(4, 3, 4, '<p>comentario calificacion 28/10/15</p>', 1),
+(5, 3, 5, '', 0),
+(6, 3, 6, 'xxxxxxxxxxxxxxxxxxxxxxx', 0),
+(9, 3, 9, '<p>este es mi comentario 08/10/15</p>', 1),
+(7, 6, 7, 'NO Se Envia', 0),
+(8, 3, 8, 'Falto informacion', 0),
+(10, 52, 10, 'hola hola 007', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignfeedback_editpdf_annot`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_annot` (
+  `id` bigint(10) NOT NULL,
+  `gradeid` bigint(10) NOT NULL DEFAULT '0',
+  `pageno` bigint(10) NOT NULL DEFAULT '0',
+  `x` bigint(10) DEFAULT '0',
+  `y` bigint(10) DEFAULT '0',
+  `endx` bigint(10) DEFAULT '0',
+  `endy` bigint(10) DEFAULT '0',
+  `path` longtext,
+  `type` varchar(10) DEFAULT 'line',
+  `colour` varchar(10) DEFAULT 'black',
+  `draft` tinyint(2) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='stores annotations added to pdfs submitted by students';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignfeedback_editpdf_cmnt`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_cmnt` (
+  `id` bigint(10) NOT NULL,
+  `gradeid` bigint(10) NOT NULL DEFAULT '0',
+  `x` bigint(10) DEFAULT '0',
+  `y` bigint(10) DEFAULT '0',
+  `width` bigint(10) DEFAULT '120',
+  `rawtext` longtext,
+  `pageno` bigint(10) NOT NULL DEFAULT '0',
+  `colour` varchar(10) DEFAULT 'black',
+  `draft` tinyint(2) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Stores comments added to pdfs';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignfeedback_editpdf_quick`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_quick` (
+  `id` bigint(10) NOT NULL,
+  `userid` bigint(10) NOT NULL DEFAULT '0',
+  `rawtext` longtext NOT NULL,
+  `width` bigint(10) NOT NULL DEFAULT '120',
+  `colour` varchar(10) DEFAULT 'yellow'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Stores teacher specified quicklist comments';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignfeedback_file`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_file` (
+  `id` bigint(10) NOT NULL,
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `grade` bigint(10) NOT NULL DEFAULT '0',
+  `numfiles` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Stores info about the number of files submitted by a student';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignment`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignment` (
+  `id` bigint(10) NOT NULL,
+  `course` bigint(10) NOT NULL DEFAULT '0',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `intro` longtext NOT NULL,
+  `introformat` smallint(4) NOT NULL DEFAULT '0',
+  `assignmenttype` varchar(50) NOT NULL DEFAULT '',
+  `resubmit` tinyint(2) NOT NULL DEFAULT '0',
+  `preventlate` tinyint(2) NOT NULL DEFAULT '0',
+  `emailteachers` tinyint(2) NOT NULL DEFAULT '0',
+  `var1` bigint(10) DEFAULT '0',
+  `var2` bigint(10) DEFAULT '0',
+  `var3` bigint(10) DEFAULT '0',
+  `var4` bigint(10) DEFAULT '0',
+  `var5` bigint(10) DEFAULT '0',
+  `maxbytes` bigint(10) NOT NULL DEFAULT '100000',
+  `timedue` bigint(10) NOT NULL DEFAULT '0',
+  `timeavailable` bigint(10) NOT NULL DEFAULT '0',
+  `grade` bigint(10) NOT NULL DEFAULT '0',
+  `timemodified` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Defines assignments';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignment_submissions`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignment_submissions` (
+  `id` bigint(10) NOT NULL,
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `userid` bigint(10) NOT NULL DEFAULT '0',
+  `timecreated` bigint(10) NOT NULL DEFAULT '0',
+  `timemodified` bigint(10) NOT NULL DEFAULT '0',
+  `numfiles` bigint(10) NOT NULL DEFAULT '0',
+  `data1` longtext,
+  `data2` longtext,
+  `grade` bigint(11) NOT NULL DEFAULT '0',
+  `submissioncomment` longtext NOT NULL,
+  `format` smallint(4) NOT NULL DEFAULT '0',
+  `teacher` bigint(10) NOT NULL DEFAULT '0',
+  `timemarked` bigint(10) NOT NULL DEFAULT '0',
+  `mailed` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Info about submitted assignments';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignment_upgrade`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignment_upgrade` (
+  `id` bigint(10) NOT NULL,
+  `oldcmid` bigint(10) NOT NULL DEFAULT '0',
+  `oldinstance` bigint(10) NOT NULL DEFAULT '0',
+  `newcmid` bigint(10) NOT NULL DEFAULT '0',
+  `newinstance` bigint(10) NOT NULL DEFAULT '0',
+  `timecreated` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Info about upgraded assignments';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignsubmission_file`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignsubmission_file` (
+  `id` bigint(10) NOT NULL,
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `submission` bigint(10) NOT NULL DEFAULT '0',
+  `numfiles` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='Info about file submissions for assignments';
+
+--
+-- Volcado de datos para la tabla `mdl_assignsubmission_file`
+--
+
+INSERT INTO `mdl_assignsubmission_file` (`id`, `assignment`, `submission`, `numfiles`) VALUES
+(1, 1, 1, 1),
+(2, 1, 2, 1),
+(3, 2, 3, 1),
+(4, 3, 4, 1),
+(5, 3, 5, 1),
+(6, 6, 6, 0),
+(7, 3, 7, 0),
+(8, 3, 8, 0),
+(9, 6, 9, 0),
+(10, 52, 10, 0),
+(11, 54, 11, 0),
+(12, 2, 12, 0),
+(13, 55, 13, 0),
+(14, 56, 14, 1),
+(15, 53, 15, 1),
+(16, 9, 16, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assignsubmission_onlinetext`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assignsubmission_onlinetext` (
+  `id` bigint(10) NOT NULL,
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `submission` bigint(10) NOT NULL DEFAULT '0',
+  `onlinetext` longtext,
+  `onlineformat` smallint(4) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='Info about onlinetext submission';
+
+--
+-- Volcado de datos para la tabla `mdl_assignsubmission_onlinetext`
+--
+
+INSERT INTO `mdl_assignsubmission_onlinetext` (`id`, `assignment`, `submission`, `onlinetext`, `onlineformat`) VALUES
+(1, 3, 4, '3 intento m', 1),
+(2, 3, 5, '<p>Profe buenas noches, no he terminado mi tarea aÃºn, se la envio a su correo, Gracias!!! :)</p>', 1),
+(3, 6, 6, 'La tarea del Profe', 1),
+(4, 3, 7, '<span style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">El tÃ©rmino Monitoreo de red</span><span style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">&nbsp;describe el uso de un sistema que constantemente monitoriza una&nbsp;</span><a href="https://es.wikipedia.org/wiki/Red_de_computadoras" title="Red de computadoras" style="color: rgb(11, 0, 128); font-family: sans-serif; line-height: 22.4px; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;">r</a>ed de computadoras<span style="color: rgb(37, 37, 37); font-family: sans-serif; line-height: 22.4px;">&nbsp;en busca de componentes defectuosos o lentos.</span>', 1),
+(5, 3, 8, '<p>hola hola 7/10/2015</p>', 1),
+(6, 6, 9, 'Esta es mi tarea del webservice mod_assign_save_submission 2', 1),
+(7, 52, 10, 'jannet 007', 1),
+(8, 54, 11, 'segundo intento', 1),
+(9, 56, 14, '', 1),
+(10, 53, 15, '', 1),
+(11, 9, 16, '<p><br></p>', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assign_grades`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assign_grades` (
+  `id` bigint(10) NOT NULL,
+  `assignment` varchar(100) NOT NULL DEFAULT '0',
+  `userid` bigint(10) NOT NULL DEFAULT '0',
+  `timecreated` bigint(10) NOT NULL DEFAULT '0',
+  `timemodified` bigint(10) NOT NULL DEFAULT '0',
+  `grader` bigint(10) NOT NULL DEFAULT '0',
+  `grade` decimal(10,5) DEFAULT '0.00000',
+  `attemptnumber` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='Grading information about a single assignment submission.';
+
+--
+-- Volcado de datos para la tabla `mdl_assign_grades`
+--
+
+INSERT INTO `mdl_assign_grades` (`id`, `assignment`, `userid`, `timecreated`, `timemodified`, `grader`, `grade`, `attemptnumber`) VALUES
+(1, '1', 3, 1431014319, 1443469344, 3, '88.00000', 0),
+(2, '1', 9, 1431014361, 1443469175, 3, '100.00000', 0),
+(3, '2', 9, 1443110536, 1443547220, 3, '59.00000', 0),
+(4, '3', 12, 1443467507, 1446048935, 3, '95.00000', 0),
+(8, '3', 9, 1444242064, 1446073821, 3, '87.00000', 0),
+(6, '3', 10, 1443559741, 1446072906, 3, '100.00000', 0),
+(7, '6', 3, 1443800528, 1443800578, 3, '60.00000', 0),
+(9, '3', 14, 1444319459, 1444319459, 3, '94.00000', 0),
+(10, '52', 10, 1445977779, 1446146152, 3, '100.00000', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assign_plugin_config`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assign_plugin_config` (
+  `id` bigint(10) NOT NULL,
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `plugin` varchar(28) NOT NULL DEFAULT '',
+  `subtype` varchar(28) NOT NULL DEFAULT '',
+  `name` varchar(28) NOT NULL DEFAULT '',
+  `value` longtext
+) ENGINE=MyISAM AUTO_INCREMENT=627 DEFAULT CHARSET=utf8 COMMENT='Config data for an instance of a plugin in an assignment.';
+
+--
+-- Volcado de datos para la tabla `mdl_assign_plugin_config`
+--
+
+INSERT INTO `mdl_assign_plugin_config` (`id`, `assignment`, `plugin`, `subtype`, `name`, `value`) VALUES
+(1, 1, 'onlinetext', 'assignsubmission', 'enabled', '0'),
+(2, 1, 'file', 'assignsubmission', 'enabled', '1'),
+(3, 1, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(4, 1, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(5, 1, 'comments', 'assignsubmission', 'enabled', '1'),
+(6, 1, 'comments', 'assignfeedback', 'enabled', '1'),
+(7, 1, 'comments', 'assignfeedback', 'commentinline', '0'),
+(8, 1, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(9, 1, 'offline', 'assignfeedback', 'enabled', '0'),
+(10, 1, 'file', 'assignfeedback', 'enabled', '0'),
+(11, 2, 'onlinetext', 'assignsubmission', 'enabled', '0'),
+(12, 2, 'file', 'assignsubmission', 'enabled', '1'),
+(13, 2, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(14, 2, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(15, 2, 'comments', 'assignsubmission', 'enabled', '1'),
+(16, 2, 'comments', 'assignfeedback', 'enabled', '1'),
+(17, 2, 'comments', 'assignfeedback', 'commentinline', '0'),
+(18, 2, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(19, 2, 'offline', 'assignfeedback', 'enabled', '0'),
+(20, 2, 'file', 'assignfeedback', 'enabled', '0'),
+(21, 3, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(22, 3, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(23, 3, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(24, 3, 'file', 'assignsubmission', 'enabled', '1'),
+(25, 3, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(26, 3, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(27, 3, 'comments', 'assignsubmission', 'enabled', '1'),
+(28, 3, 'comments', 'assignfeedback', 'enabled', '1'),
+(29, 3, 'comments', 'assignfeedback', 'commentinline', '0'),
+(30, 3, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(31, 3, 'offline', 'assignfeedback', 'enabled', '0'),
+(32, 3, 'file', 'assignfeedback', 'enabled', '0'),
+(33, 4, 'onlinetext', 'assignsubmission', 'enabled', '0'),
+(34, 4, 'file', 'assignsubmission', 'enabled', '1'),
+(35, 4, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(36, 4, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(37, 4, 'comments', 'assignsubmission', 'enabled', '1'),
+(38, 4, 'comments', 'assignfeedback', 'enabled', '1'),
+(39, 4, 'comments', 'assignfeedback', 'commentinline', '0'),
+(40, 4, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(41, 4, 'offline', 'assignfeedback', 'enabled', '0'),
+(42, 4, 'file', 'assignfeedback', 'enabled', '0'),
+(43, 5, 'onlinetext', 'assignsubmission', 'enabled', '0'),
+(44, 5, 'file', 'assignsubmission', 'enabled', '1'),
+(45, 5, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(46, 5, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(47, 5, 'comments', 'assignsubmission', 'enabled', '1'),
+(48, 5, 'comments', 'assignfeedback', 'enabled', '1'),
+(49, 5, 'comments', 'assignfeedback', 'commentinline', '0'),
+(50, 5, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(51, 5, 'offline', 'assignfeedback', 'enabled', '0'),
+(52, 5, 'file', 'assignfeedback', 'enabled', '0'),
+(53, 6, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(54, 6, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(55, 6, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(56, 6, 'file', 'assignsubmission', 'enabled', '1'),
+(57, 6, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(58, 6, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(59, 6, 'comments', 'assignsubmission', 'enabled', '1'),
+(60, 6, 'comments', 'assignfeedback', 'enabled', '1'),
+(61, 6, 'comments', 'assignfeedback', 'commentinline', '0'),
+(62, 6, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(63, 6, 'offline', 'assignfeedback', 'enabled', '0'),
+(64, 6, 'file', 'assignfeedback', 'enabled', '0'),
+(65, 9, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(66, 9, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(67, 9, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(68, 9, 'file', 'assignsubmission', 'enabled', '1'),
+(69, 9, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(70, 9, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(71, 9, 'comments', 'assignsubmission', 'enabled', '1'),
+(72, 9, 'comments', 'assignfeedback', 'enabled', '1'),
+(73, 9, 'comments', 'assignfeedback', 'commentinline', '0'),
+(74, 9, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(75, 9, 'offline', 'assignfeedback', 'enabled', '0'),
+(76, 9, 'file', 'assignfeedback', 'enabled', '0'),
+(77, 10, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(78, 10, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(79, 10, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(80, 10, 'file', 'assignsubmission', 'enabled', '1'),
+(81, 10, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(82, 10, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(83, 10, 'comments', 'assignsubmission', 'enabled', '1'),
+(84, 10, 'comments', 'assignfeedback', 'enabled', '1'),
+(85, 10, 'comments', 'assignfeedback', 'commentinline', '0'),
+(86, 10, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(87, 10, 'offline', 'assignfeedback', 'enabled', '0'),
+(88, 10, 'file', 'assignfeedback', 'enabled', '0'),
+(89, 12, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(90, 12, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(91, 12, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(92, 12, 'file', 'assignsubmission', 'enabled', '1'),
+(93, 12, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(94, 12, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(95, 12, 'comments', 'assignsubmission', 'enabled', '1'),
+(96, 12, 'comments', 'assignfeedback', 'enabled', '1'),
+(97, 12, 'comments', 'assignfeedback', 'commentinline', '0'),
+(98, 12, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(99, 12, 'offline', 'assignfeedback', 'enabled', '0'),
+(100, 12, 'file', 'assignfeedback', 'enabled', '0'),
+(101, 13, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(102, 13, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(103, 13, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(104, 13, 'file', 'assignsubmission', 'enabled', '1'),
+(105, 13, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(106, 13, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(107, 13, 'comments', 'assignsubmission', 'enabled', '1'),
+(108, 13, 'comments', 'assignfeedback', 'enabled', '1'),
+(109, 13, 'comments', 'assignfeedback', 'commentinline', '0'),
+(110, 13, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(111, 13, 'offline', 'assignfeedback', 'enabled', '0'),
+(112, 13, 'file', 'assignfeedback', 'enabled', '0'),
+(113, 14, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(114, 14, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(115, 14, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(116, 14, 'file', 'assignsubmission', 'enabled', '1'),
+(117, 14, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(118, 14, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(119, 14, 'comments', 'assignsubmission', 'enabled', '1'),
+(120, 14, 'comments', 'assignfeedback', 'enabled', '1'),
+(121, 14, 'comments', 'assignfeedback', 'commentinline', '0'),
+(122, 14, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(123, 14, 'offline', 'assignfeedback', 'enabled', '0'),
+(124, 14, 'file', 'assignfeedback', 'enabled', '0'),
+(125, 15, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(126, 15, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(127, 15, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(128, 15, 'file', 'assignsubmission', 'enabled', '1'),
+(129, 15, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(130, 15, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(131, 15, 'comments', 'assignsubmission', 'enabled', '1'),
+(132, 15, 'comments', 'assignfeedback', 'enabled', '1'),
+(133, 15, 'comments', 'assignfeedback', 'commentinline', '0'),
+(134, 15, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(135, 15, 'offline', 'assignfeedback', 'enabled', '0'),
+(136, 15, 'file', 'assignfeedback', 'enabled', '0'),
+(137, 16, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(138, 16, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(139, 16, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(140, 16, 'file', 'assignsubmission', 'enabled', '1'),
+(141, 16, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(142, 16, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(143, 16, 'comments', 'assignsubmission', 'enabled', '1'),
+(144, 16, 'comments', 'assignfeedback', 'enabled', '1'),
+(145, 16, 'comments', 'assignfeedback', 'commentinline', '0'),
+(146, 16, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(147, 16, 'offline', 'assignfeedback', 'enabled', '0'),
+(148, 16, 'file', 'assignfeedback', 'enabled', '0'),
+(149, 17, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(150, 17, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(151, 17, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(152, 17, 'file', 'assignsubmission', 'enabled', '1'),
+(153, 17, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(154, 17, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(155, 17, 'comments', 'assignsubmission', 'enabled', '1'),
+(156, 17, 'comments', 'assignfeedback', 'enabled', '1'),
+(157, 17, 'comments', 'assignfeedback', 'commentinline', '0'),
+(158, 17, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(159, 17, 'offline', 'assignfeedback', 'enabled', '0'),
+(160, 17, 'file', 'assignfeedback', 'enabled', '0'),
+(161, 18, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(162, 18, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(163, 18, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(164, 18, 'file', 'assignsubmission', 'enabled', '1'),
+(165, 18, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(166, 18, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(167, 18, 'comments', 'assignsubmission', 'enabled', '1'),
+(168, 18, 'comments', 'assignfeedback', 'enabled', '1'),
+(169, 18, 'comments', 'assignfeedback', 'commentinline', '0'),
+(170, 18, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(171, 18, 'offline', 'assignfeedback', 'enabled', '0'),
+(172, 18, 'file', 'assignfeedback', 'enabled', '0'),
+(173, 19, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(174, 19, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(175, 19, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(176, 19, 'file', 'assignsubmission', 'enabled', '1'),
+(177, 19, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(178, 19, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(179, 19, 'comments', 'assignsubmission', 'enabled', '1'),
+(180, 19, 'comments', 'assignfeedback', 'enabled', '1'),
+(181, 19, 'comments', 'assignfeedback', 'commentinline', '0'),
+(182, 19, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(183, 19, 'offline', 'assignfeedback', 'enabled', '0'),
+(184, 19, 'file', 'assignfeedback', 'enabled', '0'),
+(185, 20, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(186, 20, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(187, 20, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(188, 20, 'file', 'assignsubmission', 'enabled', '1'),
+(189, 20, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(190, 20, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(191, 20, 'comments', 'assignsubmission', 'enabled', '1'),
+(192, 20, 'comments', 'assignfeedback', 'enabled', '1'),
+(193, 20, 'comments', 'assignfeedback', 'commentinline', '0'),
+(194, 20, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(195, 20, 'offline', 'assignfeedback', 'enabled', '0'),
+(196, 20, 'file', 'assignfeedback', 'enabled', '0'),
+(197, 21, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(198, 21, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(199, 21, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(200, 21, 'file', 'assignsubmission', 'enabled', '1'),
+(201, 21, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(202, 21, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(203, 21, 'comments', 'assignsubmission', 'enabled', '1'),
+(204, 21, 'comments', 'assignfeedback', 'enabled', '1'),
+(205, 21, 'comments', 'assignfeedback', 'commentinline', '0'),
+(206, 21, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(207, 21, 'offline', 'assignfeedback', 'enabled', '0'),
+(208, 21, 'file', 'assignfeedback', 'enabled', '0'),
+(209, 22, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(210, 22, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(211, 22, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(212, 22, 'file', 'assignsubmission', 'enabled', '1'),
+(213, 22, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(214, 22, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(215, 22, 'comments', 'assignsubmission', 'enabled', '1'),
+(216, 22, 'comments', 'assignfeedback', 'enabled', '1'),
+(217, 22, 'comments', 'assignfeedback', 'commentinline', '0'),
+(218, 22, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(219, 22, 'offline', 'assignfeedback', 'enabled', '0'),
+(220, 22, 'file', 'assignfeedback', 'enabled', '0'),
+(221, 23, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(222, 23, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(223, 23, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(224, 23, 'file', 'assignsubmission', 'enabled', '1'),
+(225, 23, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(226, 23, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(227, 23, 'comments', 'assignsubmission', 'enabled', '1'),
+(228, 23, 'comments', 'assignfeedback', 'enabled', '1'),
+(229, 23, 'comments', 'assignfeedback', 'commentinline', '0'),
+(230, 23, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(231, 23, 'offline', 'assignfeedback', 'enabled', '0'),
+(232, 23, 'file', 'assignfeedback', 'enabled', '0'),
+(233, 24, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(234, 24, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(235, 24, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(236, 24, 'file', 'assignsubmission', 'enabled', '1'),
+(237, 24, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(238, 24, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(239, 24, 'comments', 'assignsubmission', 'enabled', '1'),
+(240, 24, 'comments', 'assignfeedback', 'enabled', '1'),
+(241, 24, 'comments', 'assignfeedback', 'commentinline', '0'),
+(242, 24, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(243, 24, 'offline', 'assignfeedback', 'enabled', '0'),
+(244, 24, 'file', 'assignfeedback', 'enabled', '0'),
+(245, 25, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(246, 25, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(247, 25, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(248, 25, 'file', 'assignsubmission', 'enabled', '1'),
+(249, 25, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(250, 25, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(251, 25, 'comments', 'assignsubmission', 'enabled', '1'),
+(252, 25, 'comments', 'assignfeedback', 'enabled', '1'),
+(253, 25, 'comments', 'assignfeedback', 'commentinline', '0'),
+(254, 25, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(255, 25, 'offline', 'assignfeedback', 'enabled', '0'),
+(256, 25, 'file', 'assignfeedback', 'enabled', '0'),
+(257, 26, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(258, 26, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(259, 26, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(260, 26, 'file', 'assignsubmission', 'enabled', '1'),
+(261, 26, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(262, 26, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(263, 26, 'comments', 'assignsubmission', 'enabled', '1'),
+(264, 26, 'comments', 'assignfeedback', 'enabled', '1'),
+(265, 26, 'comments', 'assignfeedback', 'commentinline', '0'),
+(266, 26, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(267, 26, 'offline', 'assignfeedback', 'enabled', '0'),
+(268, 26, 'file', 'assignfeedback', 'enabled', '0'),
+(269, 27, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(270, 27, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(271, 27, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(272, 27, 'file', 'assignsubmission', 'enabled', '1'),
+(273, 27, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(274, 27, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(275, 27, 'comments', 'assignsubmission', 'enabled', '1'),
+(276, 27, 'comments', 'assignfeedback', 'enabled', '1'),
+(277, 27, 'comments', 'assignfeedback', 'commentinline', '0'),
+(278, 27, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(279, 27, 'offline', 'assignfeedback', 'enabled', '0'),
+(280, 27, 'file', 'assignfeedback', 'enabled', '0'),
+(281, 28, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(282, 28, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(283, 28, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(284, 28, 'file', 'assignsubmission', 'enabled', '1'),
+(285, 28, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(286, 28, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(287, 28, 'comments', 'assignsubmission', 'enabled', '1'),
+(288, 28, 'comments', 'assignfeedback', 'enabled', '1'),
+(289, 28, 'comments', 'assignfeedback', 'commentinline', '0'),
+(290, 28, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(291, 28, 'offline', 'assignfeedback', 'enabled', '0'),
+(292, 28, 'file', 'assignfeedback', 'enabled', '0'),
+(293, 29, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(294, 29, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(295, 29, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(296, 29, 'file', 'assignsubmission', 'enabled', '1'),
+(297, 29, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(298, 29, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(299, 29, 'comments', 'assignsubmission', 'enabled', '1'),
+(300, 29, 'comments', 'assignfeedback', 'enabled', '1'),
+(301, 29, 'comments', 'assignfeedback', 'commentinline', '0'),
+(302, 29, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(303, 29, 'offline', 'assignfeedback', 'enabled', '0'),
+(304, 29, 'file', 'assignfeedback', 'enabled', '0'),
+(305, 30, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(306, 30, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(307, 30, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(308, 30, 'file', 'assignsubmission', 'enabled', '1'),
+(309, 30, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(310, 30, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(311, 30, 'comments', 'assignsubmission', 'enabled', '1'),
+(312, 30, 'comments', 'assignfeedback', 'enabled', '1'),
+(313, 30, 'comments', 'assignfeedback', 'commentinline', '0'),
+(314, 30, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(315, 30, 'offline', 'assignfeedback', 'enabled', '0'),
+(316, 30, 'file', 'assignfeedback', 'enabled', '0'),
+(317, 31, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(318, 31, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(319, 31, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(320, 31, 'file', 'assignsubmission', 'enabled', '1'),
+(321, 31, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(322, 31, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(323, 31, 'comments', 'assignsubmission', 'enabled', '1'),
+(324, 31, 'comments', 'assignfeedback', 'enabled', '1'),
+(325, 31, 'comments', 'assignfeedback', 'commentinline', '0'),
+(326, 31, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(327, 31, 'offline', 'assignfeedback', 'enabled', '0'),
+(328, 31, 'file', 'assignfeedback', 'enabled', '0'),
+(329, 32, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(330, 32, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(331, 32, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(332, 32, 'file', 'assignsubmission', 'enabled', '1'),
+(333, 32, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(334, 32, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(335, 32, 'comments', 'assignsubmission', 'enabled', '1'),
+(336, 32, 'comments', 'assignfeedback', 'enabled', '1'),
+(337, 32, 'comments', 'assignfeedback', 'commentinline', '0'),
+(338, 32, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(339, 32, 'offline', 'assignfeedback', 'enabled', '0'),
+(340, 32, 'file', 'assignfeedback', 'enabled', '0'),
+(341, 33, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(342, 33, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(343, 33, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(344, 33, 'file', 'assignsubmission', 'enabled', '1'),
+(345, 33, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(346, 33, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(347, 33, 'comments', 'assignsubmission', 'enabled', '1'),
+(348, 33, 'comments', 'assignfeedback', 'enabled', '1'),
+(349, 33, 'comments', 'assignfeedback', 'commentinline', '0'),
+(350, 33, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(351, 33, 'offline', 'assignfeedback', 'enabled', '0'),
+(352, 33, 'file', 'assignfeedback', 'enabled', '0'),
+(353, 34, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(354, 34, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(355, 34, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(356, 34, 'file', 'assignsubmission', 'enabled', '1'),
+(357, 34, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(358, 34, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(359, 34, 'comments', 'assignsubmission', 'enabled', '1'),
+(360, 34, 'comments', 'assignfeedback', 'enabled', '1'),
+(361, 34, 'comments', 'assignfeedback', 'commentinline', '0'),
+(362, 34, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(363, 34, 'offline', 'assignfeedback', 'enabled', '0'),
+(364, 34, 'file', 'assignfeedback', 'enabled', '0'),
+(365, 35, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(366, 35, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(367, 35, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(368, 35, 'file', 'assignsubmission', 'enabled', '1'),
+(369, 35, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(370, 35, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(371, 35, 'comments', 'assignsubmission', 'enabled', '1'),
+(372, 35, 'comments', 'assignfeedback', 'enabled', '1'),
+(373, 35, 'comments', 'assignfeedback', 'commentinline', '0'),
+(374, 35, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(375, 35, 'offline', 'assignfeedback', 'enabled', '0'),
+(376, 35, 'file', 'assignfeedback', 'enabled', '0'),
+(377, 36, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(378, 36, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(379, 36, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(380, 36, 'file', 'assignsubmission', 'enabled', '1'),
+(381, 36, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(382, 36, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(383, 36, 'comments', 'assignsubmission', 'enabled', '1'),
+(384, 36, 'comments', 'assignfeedback', 'enabled', '1'),
+(385, 36, 'comments', 'assignfeedback', 'commentinline', '0'),
+(386, 36, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(387, 36, 'offline', 'assignfeedback', 'enabled', '0'),
+(388, 36, 'file', 'assignfeedback', 'enabled', '0'),
+(389, 37, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(390, 37, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(391, 37, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(392, 37, 'file', 'assignsubmission', 'enabled', '1'),
+(393, 37, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(394, 37, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(395, 37, 'comments', 'assignsubmission', 'enabled', '1'),
+(396, 37, 'comments', 'assignfeedback', 'enabled', '1'),
+(397, 37, 'comments', 'assignfeedback', 'commentinline', '0'),
+(398, 37, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(399, 37, 'offline', 'assignfeedback', 'enabled', '0'),
+(400, 37, 'file', 'assignfeedback', 'enabled', '0'),
+(401, 38, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(402, 38, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(403, 38, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(404, 38, 'file', 'assignsubmission', 'enabled', '1'),
+(405, 38, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(406, 38, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(407, 38, 'comments', 'assignsubmission', 'enabled', '1'),
+(408, 38, 'comments', 'assignfeedback', 'enabled', '1'),
+(409, 38, 'comments', 'assignfeedback', 'commentinline', '0'),
+(410, 38, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(411, 38, 'offline', 'assignfeedback', 'enabled', '0'),
+(412, 38, 'file', 'assignfeedback', 'enabled', '0'),
+(413, 39, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(414, 39, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(415, 39, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(416, 39, 'file', 'assignsubmission', 'enabled', '1'),
+(417, 39, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(418, 39, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(419, 39, 'comments', 'assignsubmission', 'enabled', '1'),
+(420, 39, 'comments', 'assignfeedback', 'enabled', '1'),
+(421, 39, 'comments', 'assignfeedback', 'commentinline', '0'),
+(422, 39, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(423, 39, 'offline', 'assignfeedback', 'enabled', '0'),
+(424, 39, 'file', 'assignfeedback', 'enabled', '0'),
+(425, 40, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(426, 40, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(427, 40, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(428, 40, 'file', 'assignsubmission', 'enabled', '1'),
+(429, 40, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(430, 40, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(431, 40, 'comments', 'assignsubmission', 'enabled', '1'),
+(432, 40, 'comments', 'assignfeedback', 'enabled', '1'),
+(433, 40, 'comments', 'assignfeedback', 'commentinline', '0'),
+(434, 40, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(435, 40, 'offline', 'assignfeedback', 'enabled', '0'),
+(436, 40, 'file', 'assignfeedback', 'enabled', '0'),
+(437, 41, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(438, 41, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(439, 41, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(440, 41, 'file', 'assignsubmission', 'enabled', '1'),
+(441, 41, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(442, 41, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(443, 41, 'comments', 'assignsubmission', 'enabled', '1'),
+(444, 41, 'comments', 'assignfeedback', 'enabled', '1'),
+(445, 41, 'comments', 'assignfeedback', 'commentinline', '0'),
+(446, 41, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(447, 41, 'offline', 'assignfeedback', 'enabled', '0'),
+(448, 41, 'file', 'assignfeedback', 'enabled', '0'),
+(449, 42, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(450, 42, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(451, 42, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(452, 42, 'file', 'assignsubmission', 'enabled', '1'),
+(453, 42, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(454, 42, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(455, 42, 'comments', 'assignsubmission', 'enabled', '1'),
+(456, 42, 'comments', 'assignfeedback', 'enabled', '1'),
+(457, 42, 'comments', 'assignfeedback', 'commentinline', '0'),
+(458, 42, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(459, 42, 'offline', 'assignfeedback', 'enabled', '0'),
+(460, 42, 'file', 'assignfeedback', 'enabled', '0'),
+(461, 43, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(462, 43, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(463, 43, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(464, 43, 'file', 'assignsubmission', 'enabled', '1'),
+(465, 43, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(466, 43, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(467, 43, 'comments', 'assignsubmission', 'enabled', '1'),
+(468, 43, 'comments', 'assignfeedback', 'enabled', '1'),
+(469, 43, 'comments', 'assignfeedback', 'commentinline', '0'),
+(470, 43, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(471, 43, 'offline', 'assignfeedback', 'enabled', '0'),
+(472, 43, 'file', 'assignfeedback', 'enabled', '0'),
+(473, 44, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(474, 44, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(475, 44, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(476, 44, 'file', 'assignsubmission', 'enabled', '1'),
+(477, 44, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(478, 44, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(479, 44, 'comments', 'assignsubmission', 'enabled', '1'),
+(480, 44, 'comments', 'assignfeedback', 'enabled', '1'),
+(481, 44, 'comments', 'assignfeedback', 'commentinline', '0'),
+(482, 44, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(483, 44, 'offline', 'assignfeedback', 'enabled', '0'),
+(484, 44, 'file', 'assignfeedback', 'enabled', '0'),
+(485, 45, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(486, 45, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(487, 45, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(488, 45, 'file', 'assignsubmission', 'enabled', '1'),
+(489, 45, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(490, 45, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(491, 45, 'comments', 'assignsubmission', 'enabled', '1'),
+(492, 45, 'comments', 'assignfeedback', 'enabled', '1'),
+(493, 45, 'comments', 'assignfeedback', 'commentinline', '0'),
+(494, 45, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(495, 45, 'offline', 'assignfeedback', 'enabled', '0'),
+(496, 45, 'file', 'assignfeedback', 'enabled', '0'),
+(497, 46, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(498, 46, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(499, 46, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(500, 46, 'file', 'assignsubmission', 'enabled', '1'),
+(501, 46, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(502, 46, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(503, 46, 'comments', 'assignsubmission', 'enabled', '1'),
+(504, 46, 'comments', 'assignfeedback', 'enabled', '1'),
+(505, 46, 'comments', 'assignfeedback', 'commentinline', '0'),
+(506, 46, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(507, 46, 'offline', 'assignfeedback', 'enabled', '0'),
+(508, 46, 'file', 'assignfeedback', 'enabled', '0'),
+(509, 47, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(510, 47, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(511, 47, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(512, 47, 'file', 'assignsubmission', 'enabled', '1'),
+(513, 47, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(514, 47, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(515, 47, 'comments', 'assignsubmission', 'enabled', '1'),
+(516, 47, 'comments', 'assignfeedback', 'enabled', '1'),
+(517, 47, 'comments', 'assignfeedback', 'commentinline', '0'),
+(518, 47, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(519, 47, 'offline', 'assignfeedback', 'enabled', '0'),
+(520, 47, 'file', 'assignfeedback', 'enabled', '0'),
+(521, 48, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(522, 48, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(523, 48, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(524, 48, 'file', 'assignsubmission', 'enabled', '1'),
+(525, 48, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(526, 48, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(527, 48, 'comments', 'assignsubmission', 'enabled', '1'),
+(528, 48, 'comments', 'assignfeedback', 'enabled', '1'),
+(529, 48, 'comments', 'assignfeedback', 'commentinline', '0'),
+(530, 48, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(531, 48, 'offline', 'assignfeedback', 'enabled', '0'),
+(532, 48, 'file', 'assignfeedback', 'enabled', '0'),
+(533, 49, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(534, 49, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(535, 49, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(536, 49, 'file', 'assignsubmission', 'enabled', '1'),
+(537, 49, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(538, 49, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(539, 49, 'comments', 'assignsubmission', 'enabled', '1'),
+(540, 49, 'comments', 'assignfeedback', 'enabled', '1'),
+(541, 49, 'comments', 'assignfeedback', 'commentinline', '0'),
+(542, 49, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(543, 49, 'offline', 'assignfeedback', 'enabled', '0'),
+(544, 49, 'file', 'assignfeedback', 'enabled', '0'),
+(545, 50, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(546, 50, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(547, 50, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(548, 50, 'file', 'assignsubmission', 'enabled', '1'),
+(549, 50, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(550, 50, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(551, 50, 'comments', 'assignsubmission', 'enabled', '1'),
+(552, 50, 'comments', 'assignfeedback', 'enabled', '1'),
+(553, 50, 'comments', 'assignfeedback', 'commentinline', '0'),
+(554, 50, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(555, 50, 'offline', 'assignfeedback', 'enabled', '0'),
+(556, 50, 'file', 'assignfeedback', 'enabled', '0'),
+(557, 51, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(558, 51, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(559, 51, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(560, 51, 'file', 'assignsubmission', 'enabled', '1'),
+(561, 51, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(562, 51, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(563, 51, 'comments', 'assignsubmission', 'enabled', '1'),
+(564, 51, 'comments', 'assignfeedback', 'enabled', '1'),
+(565, 51, 'comments', 'assignfeedback', 'commentinline', '0'),
+(566, 51, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(567, 51, 'offline', 'assignfeedback', 'enabled', '0'),
+(568, 51, 'file', 'assignfeedback', 'enabled', '0'),
+(569, 52, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(570, 52, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(571, 52, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(572, 52, 'file', 'assignsubmission', 'enabled', '1'),
+(573, 52, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(574, 52, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(575, 52, 'comments', 'assignsubmission', 'enabled', '1'),
+(576, 52, 'comments', 'assignfeedback', 'enabled', '1'),
+(577, 52, 'comments', 'assignfeedback', 'commentinline', '0'),
+(578, 52, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(579, 52, 'offline', 'assignfeedback', 'enabled', '0'),
+(580, 52, 'file', 'assignfeedback', 'enabled', '0'),
+(581, 53, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(582, 53, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(583, 53, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(584, 53, 'file', 'assignsubmission', 'enabled', '1'),
+(585, 53, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(586, 53, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '1048576'),
+(587, 53, 'comments', 'assignsubmission', 'enabled', '1'),
+(588, 53, 'comments', 'assignfeedback', 'enabled', '1'),
+(589, 53, 'comments', 'assignfeedback', 'commentinline', '0'),
+(590, 53, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(591, 53, 'offline', 'assignfeedback', 'enabled', '0'),
+(592, 53, 'file', 'assignfeedback', 'enabled', '0'),
+(593, 54, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(594, 54, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(595, 54, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(596, 54, 'file', 'assignsubmission', 'enabled', '1'),
+(597, 54, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(598, 54, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(599, 54, 'comments', 'assignsubmission', 'enabled', '1'),
+(600, 54, 'comments', 'assignfeedback', 'enabled', '1'),
+(601, 54, 'comments', 'assignfeedback', 'commentinline', '0'),
+(602, 54, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(603, 54, 'offline', 'assignfeedback', 'enabled', '0'),
+(604, 54, 'file', 'assignfeedback', 'enabled', '0'),
+(605, 55, 'onlinetext', 'assignsubmission', 'enabled', '0'),
+(606, 55, 'file', 'assignsubmission', 'enabled', '1'),
+(607, 55, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(608, 55, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(609, 55, 'comments', 'assignsubmission', 'enabled', '1'),
+(610, 55, 'comments', 'assignfeedback', 'enabled', '1'),
+(611, 55, 'comments', 'assignfeedback', 'commentinline', '0'),
+(612, 55, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(613, 55, 'offline', 'assignfeedback', 'enabled', '0'),
+(614, 55, 'file', 'assignfeedback', 'enabled', '0'),
+(615, 56, 'onlinetext', 'assignsubmission', 'enabled', '1'),
+(616, 56, 'onlinetext', 'assignsubmission', 'wordlimit', '0'),
+(617, 56, 'onlinetext', 'assignsubmission', 'wordlimitenabled', '0'),
+(618, 56, 'file', 'assignsubmission', 'enabled', '1'),
+(619, 56, 'file', 'assignsubmission', 'maxfilesubmissions', '1'),
+(620, 56, 'file', 'assignsubmission', 'maxsubmissionsizebytes', '0'),
+(621, 56, 'comments', 'assignsubmission', 'enabled', '1'),
+(622, 56, 'comments', 'assignfeedback', 'enabled', '1'),
+(623, 56, 'comments', 'assignfeedback', 'commentinline', '0'),
+(624, 56, 'editpdf', 'assignfeedback', 'enabled', '0'),
+(625, 56, 'offline', 'assignfeedback', 'enabled', '0'),
+(626, 56, 'file', 'assignfeedback', 'enabled', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assign_submission`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assign_submission` (
+  `id` bigint(10) NOT NULL,
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `userid` bigint(10) NOT NULL DEFAULT '0',
+  `timecreated` bigint(10) NOT NULL DEFAULT '0',
+  `timemodified` bigint(10) NOT NULL DEFAULT '0',
+  `status` varchar(10) DEFAULT NULL,
+  `groupid` bigint(10) NOT NULL DEFAULT '0',
+  `attemptnumber` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='This table keeps information about student interactions with';
+
+--
+-- Volcado de datos para la tabla `mdl_assign_submission`
+--
+
+INSERT INTO `mdl_assign_submission` (`id`, `assignment`, `userid`, `timecreated`, `timemodified`, `status`, `groupid`, `attemptnumber`) VALUES
+(1, 1, 3, 1430848060, 1430848060, 'submitted', 0, 0),
+(2, 1, 9, 1430848183, 1430848183, 'submitted', 0, 0),
+(3, 2, 9, 1441043360, 1441043360, 'submitted', 0, 0),
+(4, 3, 10, 1443112088, 1446651906, 'submitted', 0, 0),
+(5, 3, 12, 1443197416, 1446652972, 'submitted', 0, 0),
+(6, 6, 3, 1443800411, 1443800411, 'submitted', 0, 0),
+(7, 3, 9, 1444141380, 1444141380, 'submitted', 0, 0),
+(8, 3, 14, 1444243575, 1444243575, 'submitted', 0, 0),
+(9, 6, 10, 1445963526, 1445963786, 'submitted', 0, 0),
+(10, 52, 10, 1445964995, 1445976877, 'submitted', 0, 0),
+(11, 54, 10, 1446234253, 1446234343, 'submitted', 0, 0),
+(12, 2, 10, 1446237046, 1446237046, 'draft', 0, 0),
+(13, 55, 10, 1446237578, 1446237578, 'draft', 0, 0),
+(14, 56, 10, 1446670415, 1446670461, 'submitted', 0, 0),
+(15, 53, 10, 1447093487, 1447095011, 'submitted', 0, 0),
+(16, 9, 10, 1447094132, 1447094132, 'submitted', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assign_user_flags`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assign_user_flags` (
+  `id` bigint(10) NOT NULL,
+  `userid` bigint(10) NOT NULL DEFAULT '0',
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `locked` bigint(10) NOT NULL DEFAULT '0',
+  `mailed` smallint(4) NOT NULL DEFAULT '0',
+  `extensionduedate` bigint(10) NOT NULL DEFAULT '0',
+  `workflowstate` varchar(20) DEFAULT NULL,
+  `allocatedmarker` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='List of flags that can be set for a single user in a single ';
+
+--
+-- Volcado de datos para la tabla `mdl_assign_user_flags`
+--
+
+INSERT INTO `mdl_assign_user_flags` (`id`, `userid`, `assignment`, `locked`, `mailed`, `extensionduedate`, `workflowstate`, `allocatedmarker`) VALUES
+(1, 3, 1, 0, 0, 0, '', 0),
+(2, 9, 1, 0, 0, 0, '', 0),
+(3, 9, 2, 0, 0, 0, 'graded', 0),
+(4, 12, 3, 0, 0, 0, 'graded', 0),
+(5, 11, 3, 0, 0, 0, 'graded', 0),
+(6, 10, 3, 0, 0, 0, 'graded', 0),
+(7, 3, 6, 0, 0, 0, 'graded', 0),
+(8, 9, 3, 0, 0, 0, 'graded', 0),
+(9, 14, 3, 0, 0, 0, '', 0),
+(10, 10, 52, 0, 0, 0, 'graded', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_assign_user_mapping`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_assign_user_mapping` (
+  `id` bigint(10) NOT NULL,
+  `assignment` bigint(10) NOT NULL DEFAULT '0',
+  `userid` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COMMENT='Map an assignment specific id number to a user';
+
+--
+-- Volcado de datos para la tabla `mdl_assign_user_mapping`
+--
+
+INSERT INTO `mdl_assign_user_mapping` (`id`, `assignment`, `userid`) VALUES
+(1, 0, 3),
+(2, 0, 9),
+(3, 0, 6),
+(4, 0, 7),
+(5, 1, -10),
+(6, 0, 6),
+(7, 0, 9),
+(8, 0, 3),
+(9, 0, 7),
+(10, 1, 9),
+(11, 0, 6),
+(12, 0, 7),
+(13, 0, 3),
+(14, 1, 3),
+(15, 0, 7),
+(16, 0, 6),
+(17, 1, 6),
+(18, 0, 3),
+(19, 0, 9),
+(20, 2, -10),
+(21, 0, 9),
+(22, 0, 3),
+(23, 2, 9),
+(24, 0, 3),
+(25, 0, 10),
+(26, 0, 9),
+(27, 3, -10),
+(28, 0, 9),
+(29, 0, 12),
+(30, 0, 10),
+(31, 0, 3),
+(32, 6, -10),
+(33, 0, 3),
+(34, 0, 9),
+(35, 0, 12),
+(36, 0, 10),
+(37, 6, 3),
+(38, 0, 12),
+(39, 0, 9),
+(40, 0, 3),
+(41, 0, 10),
+(42, 0, 14),
+(43, 3, 14),
+(44, 0, 10),
+(45, 0, 12),
+(46, 0, 3),
+(47, 0, 9),
+(48, 3, 10),
+(49, 0, 9),
+(50, 0, 14),
+(51, 0, 11),
+(52, 0, 10),
+(53, 0, 12),
+(54, 52, -10),
+(55, 0, 14),
+(56, 0, 12),
+(57, 0, 10),
+(58, 0, 9),
+(59, 0, 11),
+(60, 52, 10),
+(61, 0, 11),
+(62, 0, 9),
+(63, 0, 12),
+(64, 3, 9),
+(65, 0, 11),
+(66, 0, 12),
+(67, 3, 12),
+(68, 0, 10),
+(69, 0, 12),
+(70, 0, 11),
+(71, 0, 9),
+(72, 0, 14),
+(73, 54, -10),
+(74, 0, 11),
+(75, 0, 12),
+(76, 0, 10),
+(77, 0, 14),
+(78, 0, 9),
+(79, 55, 10),
+(80, 0, 12),
+(81, 0, 14),
+(82, 0, 9),
+(83, 0, 10),
+(84, 0, 11),
+(85, 56, -10),
+(86, 0, 10),
+(87, 0, 9),
+(88, 0, 12),
+(89, 0, 11),
+(90, 0, 14),
+(91, 9, -10),
+(92, 0, 10),
+(93, 0, 9),
+(94, 0, 11),
+(95, 0, 12),
+(96, 0, 14),
+(97, 53, -10);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_files`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_files` (
+  `id` bigint(10) NOT NULL,
+  `contenthash` varchar(40) NOT NULL DEFAULT '',
+  `pathnamehash` varchar(40) NOT NULL DEFAULT '',
+  `contextid` bigint(10) NOT NULL,
+  `component` varchar(100) NOT NULL DEFAULT '',
+  `filearea` varchar(50) NOT NULL DEFAULT '',
+  `itemid` bigint(10) NOT NULL,
+  `filepath` varchar(255) NOT NULL DEFAULT '',
+  `filename` varchar(255) NOT NULL DEFAULT '',
+  `userid` bigint(10) DEFAULT NULL,
+  `filesize` bigint(10) NOT NULL,
+  `mimetype` varchar(100) DEFAULT NULL,
+  `status` bigint(10) NOT NULL DEFAULT '0',
+  `source` longtext,
+  `author` varchar(255) DEFAULT NULL,
+  `license` varchar(255) DEFAULT NULL,
+  `timecreated` bigint(10) NOT NULL,
+  `timemodified` bigint(10) NOT NULL,
+  `sortorder` bigint(10) NOT NULL DEFAULT '0',
+  `referencefileid` bigint(10) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=159 DEFAULT CHARSET=utf8 COMMENT='description of files, content is stored in sha1 file pool';
+
+--
+-- Volcado de datos para la tabla `mdl_files`
+--
+
+INSERT INTO `mdl_files` (`id`, `contenthash`, `pathnamehash`, `contextid`, `component`, `filearea`, `itemid`, `filepath`, `filename`, `userid`, `filesize`, `mimetype`, `status`, `source`, `author`, `license`, `timecreated`, `timemodified`, `sortorder`, `referencefileid`) VALUES
+(1, '41cfeee5884a43a4650a851f4f85e7b28316fcc9', 'a48e186a2cc853a9e94e9305f4e9bc086391212d', 1, 'theme_more', 'backgroundimage', 0, '/', 'background.jpg', 2, 4451, 'image/jpeg', 0, NULL, NULL, NULL, 1422299427, 1422299427, 0, NULL),
+(2, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'd1da7ab1bb9c08a926037367bf8ce9a838034ead', 1, 'theme_more', 'backgroundimage', 0, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1422299428, 1422299428, 0, NULL),
+(3, 'fb262df98d67c4e2a5c9802403821e00cf2992af', '508e674d49c30d4fde325fe6c7f6fd3d56b247e1', 1, 'assignfeedback_editpdf', 'stamps', 0, '/', 'smile.png', 2, 1600, 'image/png', 0, NULL, NULL, NULL, 1422299436, 1422299436, 0, NULL),
+(4, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '70b7cdade7b4e27d4e83f0cdaad10d6a3c0cccb5', 1, 'assignfeedback_editpdf', 'stamps', 0, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1422299436, 1422299436, 0, NULL),
+(5, 'a4f146f120e7e00d21291b924e26aaabe9f4297a', '68317eab56c67d32aeaee5acf509a0c4aa828b6b', 1, 'assignfeedback_editpdf', 'stamps', 0, '/', 'sad.png', 2, 1702, 'image/png', 0, NULL, NULL, NULL, 1422299436, 1422299436, 0, NULL),
+(6, '33957e31ba9c763a74638b825f0a9154acf475e1', '695a55ff780e61c9e59428aa425430b0d6bde53b', 1, 'assignfeedback_editpdf', 'stamps', 0, '/', 'tick.png', 2, 1187, 'image/png', 0, NULL, NULL, NULL, 1422299436, 1422299436, 0, NULL),
+(7, 'd613d55f37bb76d38d4ffb4b7b83e6c694778c30', '373e63af262a9b8466ba8632551520be793c37ff', 1, 'assignfeedback_editpdf', 'stamps', 0, '/', 'cross.png', 2, 1230, 'image/png', 0, NULL, NULL, NULL, 1422299436, 1422299436, 0, NULL),
+(9, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '359a7cde148afec1d8f27fd69d94aeb52a5ee3a3', 24, 'user', 'private', 0, '/', '.', 3, 0, 'document/unknown', 0, NULL, NULL, NULL, 1422465337, 1426093550, 0, NULL),
+(13, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '74c104d54c05b5f8c633a36da516d37e6c5279e4', 1, 'core', 'preview', 0, '/thumb/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1425406775, 1425406775, 0, NULL),
+(14, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '884555719c50529b9df662a38619d04b5b11e25c', 1, 'core', 'preview', 0, '/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1425406775, 1425406775, 0, NULL),
+(17, '993fe7209d3bfc280bb9f5e6c8c7c95cd4be5b44', '1c43628aa186dc380c301b3250a3afbd74e62c2b', 5, 'user', 'icon', 0, '/', 'f1.png', NULL, 22662, 'image/png', 0, NULL, NULL, NULL, 1425406780, 1425406780, 0, NULL),
+(18, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '535824e8097c2aef8aa81b506a392b2bc65f58f0', 5, 'user', 'icon', 0, '/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1425406780, 1425406780, 0, NULL),
+(19, '67e6d2ed3e175112af5d7eed45e20c02b9ba3de7', '0e935ee776b28b0546bf5bcd8b81d65a4dd888f8', 5, 'user', 'icon', 0, '/', 'f2.png', NULL, 2972, 'image/png', 0, NULL, NULL, NULL, 1425406780, 1425406780, 0, NULL),
+(20, '9ea1089d69a8c5fea729081255c69bbeb8ebb555', '1486473a480bed8006fce8a14aed94a11246a0f7', 5, 'user', 'icon', 0, '/', 'f3.png', NULL, 209809, 'image/png', 0, NULL, NULL, NULL, 1425406780, 1425406780, 0, NULL),
+(57, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'ffcadb7013234427f430d4be12b0be97ff49ba71', 82, 'assignsubmission_file', 'submission_files', 2, '/', '.', 9, 0, NULL, 0, NULL, NULL, NULL, 1430848181, 1430848183, 0, NULL),
+(55, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '72a3e29819b6d13ef2f844cde2cae8fa692da113', 81, 'user', 'draft', 481398077, '/', '.', 9, 0, NULL, 0, NULL, NULL, NULL, 1430848181, 1430848181, 0, NULL),
+(56, 'a779e7d2daa1322ff947f6392b704120776c7dcc', '5ac26915e4ce619557d6de3cb4a80c95d8c65adc', 82, 'assignsubmission_file', 'submission_files', 2, '/', 'cocina.html', 9, 2775, 'text/html', 0, 'cocina.html', 'Alan Blanco', 'allrightsreserved', 1430848181, 1430848183, 0, NULL),
+(66, 'abbee92a42facd3c16d77f1403a295310eed5336', 'd3ddfc8c49e245776eeb7d43e5fb2d2048359ef8', 24, 'user', 'icon', 0, '/', 'f3.png', NULL, 261253, 'image/png', 0, NULL, NULL, NULL, 1432644376, 1432644376, 0, NULL),
+(65, '02e8cff310d85a33245a91f7180c7b2978021288', '1ec83f2c7cf128a99771a95e817349f2a8e46851', 24, 'user', 'icon', 0, '/', 'f2.png', NULL, 3566, 'image/png', 0, NULL, NULL, NULL, 1432644376, 1432644376, 0, NULL),
+(64, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '601143bd3ae9604ce884ce0cbef1d78f5cbc4a76', 24, 'user', 'icon', 0, '/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1432644376, 1432644376, 0, NULL),
+(63, 'a60328a95161f182d106fdb40eec6e11fe92d6ca', '569d61073988a8c3f6d331ca394711941f3a03cc', 24, 'user', 'icon', 0, '/', 'f1.png', NULL, 26333, 'image/png', 0, NULL, NULL, NULL, 1432644376, 1432644376, 0, NULL),
+(54, 'a779e7d2daa1322ff947f6392b704120776c7dcc', '8f7a29c239c64f7cd7ffe18a27ce28f167fad106', 81, 'user', 'draft', 481398077, '/', 'cocina.html', 9, 2775, 'text/html', 0, 'O:8:"stdClass":1:{s:6:"source";s:11:"cocina.html";}', 'Alan Blanco', 'allrightsreserved', 1430848181, 1430848181, 0, NULL),
+(53, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'f848b4081c31bf2e426df7a470005029c3ccd826', 82, 'assignsubmission_file', 'submission_files', 1, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1430848058, 1430848060, 0, NULL),
+(50, 'a779e7d2daa1322ff947f6392b704120776c7dcc', 'fb2b74b7b43d82d3ed4032d0b10310342eb33644', 24, 'user', 'draft', 196142163, '/', 'cocina.html', 3, 2775, 'text/html', 0, 'O:8:"stdClass":1:{s:6:"source";s:11:"cocina.html";}', 'Nayn Ek', 'allrightsreserved', 1430848058, 1430848058, 0, NULL),
+(51, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '1f96e9ca9ab6f73397ebfccf1cdf44f476188d2e', 24, 'user', 'draft', 196142163, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1430848058, 1430848058, 0, NULL),
+(52, 'a779e7d2daa1322ff947f6392b704120776c7dcc', 'b57e0dff24dfc9bf61075a4bc1e638fb0df5e135', 82, 'assignsubmission_file', 'submission_files', 1, '/', 'cocina.html', 3, 2775, 'text/html', 0, 'cocina.html', 'Nayn Ek', 'allrightsreserved', 1430848058, 1430848060, 0, NULL),
+(86, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '8242636d7d80afad186475801005d21201b64b5c', 81, 'user', 'draft', 537554101, '/', '.', 9, 0, NULL, 0, NULL, NULL, NULL, 1441990065, 1441990065, 0, NULL),
+(87, 'c25f82e1e10f13047886e62f1f31659c729a8d38', '726d49e0dd40dd14f806f4ee1e3e1780bdcf65e4', 1, 'core', 'preview', 0, '/thumb/', '7a0fdc05736aa6e9ecea510c0e078f936c23ecb8', NULL, 12594, 'image/png', 0, NULL, NULL, NULL, 1441990065, 1441990065, 0, NULL),
+(85, '7a0fdc05736aa6e9ecea510c0e078f936c23ecb8', 'd231f051ad4b604d826079bfa7abb3c1f92feb61', 81, 'user', 'draft', 537554101, '/', '11052431_811730928920915_8102293039703864766_n.png', 9, 243142, 'image/png', 0, 'O:8:"stdClass":1:{s:6:"source";s:50:"11052431_811730928920915_8102293039703864766_n.png";}', 'Alan Blanco', 'allrightsreserved', 1441990065, 1441990065, 0, NULL),
+(58, '18bc6292fc0d34248977b324a799f6e5032c9000', '34697cea11be828fecf3360d5bcfac897ea89f68', 24, 'user', 'draft', 568531488, '/', 'FB_IMG_1432644218599.jpg', 3, 5034, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:24:"FB_IMG_1432644218599.jpg";}', 'Nayn Ek', 'allrightsreserved', 1432644368, 1432644368, 0, NULL),
+(59, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '98987d54b28b16c2da6f57358b945eec17a69be3', 24, 'user', 'draft', 568531488, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1432644368, 1432644368, 0, NULL),
+(60, '6bac4e88e2816cd86de1110da0952ea2883e27c0', 'a68fc393c877c37bc4153e6dbd55e73712b80b26', 1, 'core', 'preview', 0, '/thumb/', '18bc6292fc0d34248977b324a799f6e5032c9000', NULL, 23612, 'image/png', 0, NULL, NULL, NULL, 1432644369, 1432644369, 0, NULL),
+(68, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'd378dc39602eb31d85e81d53dbd2ee980be1065e', 81, 'user', 'draft', 908816184, '/', '.', 9, 0, NULL, 0, NULL, NULL, NULL, 1432644557, 1432644557, 0, NULL),
+(67, '3b9ccc6a207afe2a6a794e1b8fee63c35ed59c9c', 'a8602e760ff24813b27d4789e135e87f0ab73a20', 81, 'user', 'draft', 908816184, '/', 'FB_IMG_1432644431761.jpg', 9, 24344, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:24:"FB_IMG_1432644431761.jpg";}', 'Alan Blanco', 'allrightsreserved', 1432644557, 1432644557, 0, NULL),
+(69, 'daba3569eed32311def52a9c868d676d97396e13', 'e9288dca10156293f403ee361f752386ebe92099', 1, 'core', 'preview', 0, '/thumb/', '3b9ccc6a207afe2a6a794e1b8fee63c35ed59c9c', NULL, 11565, 'image/png', 0, NULL, NULL, NULL, 1432644558, 1432644558, 0, NULL),
+(77, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '35a773b0c46278eca558b7f072dbbdfdb10328ea', 81, 'user', 'private', 0, '/', '.', 9, 0, NULL, 0, NULL, NULL, NULL, 1441042297, 1441042297, 0, NULL),
+(76, '4f7b39595f41b90740c40de8f4b56c32c65f01f8', 'c6b03b7f0409230ec46157bc6e1458b992510552', 81, 'user', 'private', 0, '/', 'cc.txt', 9, 20933, 'text/plain', 0, NULL, 'Alan Blanco', 'allrightsreserved', 1441042297, 1441042297, 0, NULL),
+(78, '83927b747bac798a20ab7e3305a9fd45228c6725', '387be69ace963b25d3ccfad8a4d38ee3d304e3fa', 81, 'user', 'draft', 198066907, '/', 'README.TXT', 9, 1331, 'text/plain', 0, 'O:8:"stdClass":1:{s:6:"source";s:10:"README.TXT";}', 'Alan Blanco', 'allrightsreserved', 1441043358, 1441043358, 0, NULL),
+(79, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '7693831c9399c0d46bc86265362941d5a6193f7a', 81, 'user', 'draft', 198066907, '/', '.', 9, 0, NULL, 0, NULL, NULL, NULL, 1441043358, 1441043358, 0, NULL),
+(80, '83927b747bac798a20ab7e3305a9fd45228c6725', '96eac9396f1b8740bd2fb7fc64ef8f94344a5de1', 94, 'assignsubmission_file', 'submission_files', 3, '/', 'README.TXT', 9, 1331, 'text/plain', 0, 'README.TXT', 'Alan Blanco', 'allrightsreserved', 1441043358, 1441043360, 0, NULL),
+(81, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'b7dacfd5103f6b0a2acddb16a6d0d9e6d68b5113', 94, 'assignsubmission_file', 'submission_files', 3, '/', '.', 9, 0, NULL, 0, NULL, NULL, NULL, 1441043358, 1441043360, 0, NULL),
+(82, '1339435b15e2ed9e16402b055ea4655f16fec13c', '32e61d00c552e744dcc4fe508a1319c3e35e5f4c', 81, 'user', 'draft', 875481265, '/', '10053_605256729523522_113049056_n.jpg', 9, 27698, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:37:"10053_605256729523522_113049056_n.jpg";}', 'Alan Blanco', 'allrightsreserved', 1441989969, 1441989969, 0, NULL),
+(83, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '68066f2979999c69754bfa2df43bac77720c053b', 81, 'user', 'draft', 875481265, '/', '.', 9, 0, NULL, 0, NULL, NULL, NULL, 1441989969, 1441989969, 0, NULL),
+(84, '5be328d5c0d817ebe6b3c0f6104cdf6e13d5ebf2', 'ffbf06132a5354d801cfca77edb3f6b1c930b957', 1, 'core', 'preview', 0, '/thumb/', '1339435b15e2ed9e16402b055ea4655f16fec13c', NULL, 11438, 'image/png', 0, NULL, NULL, NULL, 1441989970, 1441989970, 0, NULL),
+(95, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '6f89d9214a59c3b0d20bbc03f8c7dc76caf489ec', 5, 'user', 'draft', 48161826, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1442596674, 1442596674, 0, NULL),
+(94, '3c2c1f6a86b8d9b4218688fed552ed11d3ef84a7', '45875b6240eece9f3b5ae348b4686979fbee1438', 5, 'user', 'draft', 48161826, '/', 'perfe.png', 2, 42273, 'image/png', 0, 'O:8:"stdClass":1:{s:6:"source";s:9:"perfe.png";}', 'Admin User', 'allrightsreserved', 1442596674, 1442596674, 0, NULL),
+(90, 'dec278a178bf2ef619e1e47819681b7dc4b18052', 'a27cc3284e080e19bc960b7a0b3235f797352dca', 81, 'user', 'icon', 0, '/', 'f1.png', NULL, 15217, 'image/png', 0, NULL, NULL, NULL, 1441990070, 1441990070, 0, NULL),
+(91, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '506a5b07e2c6401a390e07ed21879e6fbcb266a2', 81, 'user', 'icon', 0, '/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1441990070, 1441990070, 0, NULL),
+(92, 'e275dea8bd8c93402282fbd18115209701eb1e40', '75ea825a6c63531863107e72cbeede2dc9788ba2', 81, 'user', 'icon', 0, '/', 'f2.png', NULL, 2481, 'image/png', 0, NULL, NULL, NULL, 1441990070, 1441990070, 0, NULL),
+(93, '6d8c0fc69d7c0f83a76dd0ff38b80a963628ca6b', '6e448b59ac853ce5f95c566b6db7fd8493d3c25a', 81, 'user', 'icon', 0, '/', 'f3.png', NULL, 337517, 'image/png', 0, NULL, NULL, NULL, 1441990070, 1441990070, 0, NULL),
+(96, '2f1e82a33ffb7ad99fb4614cd48834a504de7274', '5f3895d540106f1c0829a9aa9d4903d6933b2488', 1, 'core', 'preview', 0, '/thumb/', '3c2c1f6a86b8d9b4218688fed552ed11d3ef84a7', NULL, 23460, 'image/png', 0, NULL, NULL, NULL, 1442596675, 1442596675, 0, NULL),
+(104, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'ed59bcdaa86b36ee9e0c4fd0b9ebc6a5e6780965', 24, 'user', 'draft', 985890530, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1443855408, 1443855408, 0, NULL),
+(103, 'df7be9dc4f467187783aca68c7ce98e4df2172d0', 'f8e5cd1baf7deaf9c6464f5531298e22117f40d4', 24, 'user', 'draft', 985890530, '/', 'Penguins.jpg', 3, 777835, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:12:"Penguins.jpg";}', 'Nayn Ek', 'allrightsreserved', 1443855408, 1443855408, 0, NULL),
+(99, '1a2642f6b3072f6847fdbc78b9e425bb2c80cf71', '4c3922a2c222933e9460a2f7fcd41392ca3498b0', 101, 'user', 'icon', 0, '/', 'f1.png', NULL, 28452, 'image/png', 0, NULL, NULL, NULL, 1442596682, 1442596682, 0, NULL),
+(100, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '41fa8bc7c6cb8b9f43f23a6177262bdd684b4465', 101, 'user', 'icon', 0, '/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1442596682, 1442596682, 0, NULL),
+(101, '529b28d9462e3849015db58ce9e48be0b0bdc4c8', '86c9e933fbff47c8e7f3f6ca1ebc35dda27b849f', 101, 'user', 'icon', 0, '/', 'f2.png', NULL, 3969, 'image/png', 0, NULL, NULL, NULL, 1442596682, 1442596682, 0, NULL),
+(102, 'ff46ce2d5452a63f148d07d1e289faa4d273e20a', '57c29f7bd09363008067654934401843b3a9d638', 101, 'user', 'icon', 0, '/', 'f3.png', NULL, 201163, 'image/png', 0, NULL, NULL, NULL, 1442596682, 1442596682, 0, NULL),
+(105, 'f89b24bceceab05ececd816c45a92b3eb627f075', 'ad143caceaee4d78a142b0cf49440b41949c4626', 1, 'core', 'preview', 0, '/thumb/', 'df7be9dc4f467187783aca68c7ce98e4df2172d0', NULL, 17698, 'image/png', 0, NULL, NULL, NULL, 1443855409, 1443855409, 0, NULL),
+(106, 'df7be9dc4f467187783aca68c7ce98e4df2172d0', 'a07a4e7e732b18f1196a6def2d40bf5d8580b12d', 128, 'mod_folder', 'content', 0, '/', 'Penguins.jpg', 3, 777835, 'image/jpeg', 0, 'Penguins.jpg', 'Nayn Ek', 'allrightsreserved', 1443855408, 1443855411, 0, NULL),
+(107, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'f61ae6f526ba2a7db6e485da011c75ad6f31b7e0', 128, 'mod_folder', 'content', 0, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1443855408, 1443855411, 0, NULL),
+(108, '6d779dd4c1b731ee14838f088c9ab23f9710e4b4', 'fb21177efea4b5e956923cbfe91147142248f9ea', 1, 'core', 'preview', 0, '/tinyicon/', 'df7be9dc4f467187783aca68c7ce98e4df2172d0', NULL, 1585, 'image/png', 0, NULL, NULL, NULL, 1443855411, 1443855411, 0, NULL),
+(109, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'ab101fa6f3b2950a1981dcefd153fd11d65ca6a0', 1, 'core', 'preview', 0, '/tinyicon/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1443855411, 1443855411, 0, NULL),
+(110, 'b84aa317503a20a4e3e80af03c35690f28b836a6', '79139ef70dad0b35e3b98045d71db18e0b3232e2', 24, 'user', 'draft', 242666361, '/', '961274_620560694686342_1152345330_n.jpg', 3, 112413, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:39:"961274_620560694686342_1152345330_n.jpg";}', 'Nayn Ek', 'allrightsreserved', 1444143392, 1444143392, 0, NULL),
+(111, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'd5a17ef9286fd80b7a2b98c517ab54bb5b03467b', 24, 'user', 'draft', 242666361, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1444143392, 1444143392, 0, NULL),
+(112, 'b673adf48f45c37c3a8d8ca5e9f9cd6109909861', 'd613d3108f8677e296b0df7fcf0e2ae209dcc749', 1, 'core', 'preview', 0, '/thumb/', 'b84aa317503a20a4e3e80af03c35690f28b836a6', NULL, 13762, 'image/png', 0, NULL, NULL, NULL, 1444143393, 1444143393, 0, NULL),
+(113, 'b84aa317503a20a4e3e80af03c35690f28b836a6', '3aede687a12a15233c3a4c33fc449773bf2e6e3f', 130, 'mod_forum', 'attachment', 11, '/', '961274_620560694686342_1152345330_n.jpg', 3, 112413, 'image/jpeg', 0, '961274_620560694686342_1152345330_n.jpg', 'Nayn Ek', 'allrightsreserved', 1444143392, 1444143401, 0, NULL),
+(114, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '30fcaad15c6b878010c3db7b2bc3112f610f4d09', 130, 'mod_forum', 'attachment', 11, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1444143392, 1444143401, 0, NULL),
+(115, '1b4605b0e20ceccf91aa278d10e81fad64e24e27', '70766c0e1e31aae2ae1f1d4f818f7ee49de68bba', 83, 'user', 'draft', 170257569, '/', 'imagenPrueba.jpg', 10, 561276, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:14:"Lighthouse.jpg";}', 'jannet orozco', 'allrightsreserved', 1446569076, 1446569076, 0, NULL),
+(116, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'e30bbdd0ec25f806247d6398f8e7ab36f2c4797e', 83, 'user', 'draft', 170257569, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1446569077, 1446569077, 0, NULL),
+(117, 'b6591597cd5bd6f5f2a9c46df7511e099615d69c', 'e21e509808d444f7381fb11e37192da08776d0a1', 1, 'core', 'preview', 0, '/thumb/', '1b4605b0e20ceccf91aa278d10e81fad64e24e27', NULL, 16032, 'image/png', 0, NULL, NULL, NULL, 1446569077, 1446569077, 0, NULL),
+(128, '9c3dcb1f9185a314ea25d51aed3b5881b32f420c', 'aeb10757a8c437fe2e339791fb354b683593d731', 98, 'assignsubmission_file', 'submission_files', 4, '/', 'Koala.jpg', 10, 780831, 'image/jpeg', 0, 'Koala.jpg', 'jannet orozco', 'allrightsreserved', 1446651905, 1446651906, 0, NULL),
+(129, '9c3dcb1f9185a314ea25d51aed3b5881b32f420c', 'aa7c581b57c495669d58e66974f8094633f88768', 101, 'user', 'draft', 765930176, '/', 'Koala.jpg', 12, 780831, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:9:"Koala.jpg";}', 'JosÃ© Manuel CortÃ©s Aguilar', 'allrightsreserved', 1446652961, 1446652961, 0, NULL),
+(119, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'bbf2e1df069e1a08583d2a3fc149297612a58413', 98, 'assignsubmission_file', 'submission_files', 4, '/', '.', 10, 0, 'document/unknown', 0, NULL, NULL, NULL, 1446569077, 1446651883, 0, NULL),
+(121, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '49a5ba1edff3a9e8d02bae37cf4f79dd2bd83959', 83, 'user', 'draft', 664062500, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1446651536, 1446651536, 0, NULL),
+(122, '1b4605b0e20ceccf91aa278d10e81fad64e24e27', '1eae6d5d79c124c1a6d1ab3d6ce8711aa6dfc164', 83, 'user', 'draft', 664062500, '/', 'Faro.jpg', 10, 561276, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:14:"Lighthouse.jpg";}', 'jannet orozco', 'allrightsreserved', 1446651709, 1446651709, 0, NULL),
+(125, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '8052b8002667e1e96647079a9c431926a39f08af', 83, 'user', 'draft', 784637451, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1446651883, 1446651883, 0, NULL),
+(126, '9c3dcb1f9185a314ea25d51aed3b5881b32f420c', '89deb11765f2fe88b7c6c71f8d1c235a99f314d7', 83, 'user', 'draft', 784637451, '/', 'Koala.jpg', 10, 780831, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:9:"Koala.jpg";}', 'jannet orozco', 'allrightsreserved', 1446651905, 1446651905, 0, NULL),
+(127, '36c51061352f5af3e9481d7aa32e5931582ef3cb', '3e59cb0ea956ab658e39e87ec7daaa7df1b8238b', 1, 'core', 'preview', 0, '/thumb/', '9c3dcb1f9185a314ea25d51aed3b5881b32f420c', NULL, 19222, 'image/png', 0, NULL, NULL, NULL, 1446651905, 1446651905, 0, NULL),
+(130, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'bd29ed069521e6e4840469abf79fdad179317a40', 101, 'user', 'draft', 765930176, '/', '.', 12, 0, NULL, 0, NULL, NULL, NULL, 1446652961, 1446652961, 0, NULL),
+(131, '9c3dcb1f9185a314ea25d51aed3b5881b32f420c', '4b1b372a59b6824d22ab2659009154c0b60ba02c', 98, 'assignsubmission_file', 'submission_files', 5, '/', 'Koala.jpg', 12, 780831, 'image/jpeg', 0, 'Koala.jpg', 'JosÃ© Manuel CortÃ©s Aguilar', 'allrightsreserved', 1446652961, 1446652972, 0, NULL),
+(132, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'f4bec7ed074088e47df0d78302d994ca2dccfc94', 98, 'assignsubmission_file', 'submission_files', 5, '/', '.', 12, 0, NULL, 0, NULL, NULL, NULL, 1446652961, 1446652972, 0, NULL),
+(133, '9c3dcb1f9185a314ea25d51aed3b5881b32f420c', '6eb79d5890c3a9161b8d64f6b3990d2480f42532', 101, 'user', 'draft', 509155273, '/', 'Koala.jpg', 12, 780831, 'image/jpeg', 0, 'O:8:"stdClass":2:{s:6:"source";s:9:"Koala.jpg";s:8:"original";s:244:"YTo2OntzOjk6ImNvbnRleHRpZCI7aTo5ODtzOjk6ImNvbXBvbmVudCI7czoyMToiYXNzaWduc3VibWlzc2lvbl9maWxlIjtzOjY6Iml0ZW1pZCI7aTo1O3M6ODoiZmlsZWFyZWEiO3M6MTY6InN1Ym1pc3Npb25fZmlsZXMiO3M6ODoiZmlsZXBhdGgiO3M6MToiLyI7czo4OiJmaWxlbmFtZSI7czo5OiJLb2FsYS5qcGciO30=";}', 'JosÃ© Manuel CortÃ©s Aguilar', 'allrightsreserved', 1446652961, 1446652972, 0, NULL),
+(134, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '87416cadb0aed63daffbe52155b6dae844211caa', 101, 'user', 'draft', 509155273, '/', '.', 12, 0, NULL, 0, NULL, NULL, NULL, 1446653060, 1446653060, 0, NULL),
+(135, '54c2f1a1eb6f12d681a5c7078421a5500cee02ad', 'cdab54fac00d4a97308998bfca878ddb8e72547e', 83, 'user', 'draft', 255187989, '/', 'Tulipanes.jpg', 10, 620888, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:10:"Tulips.jpg";}', 'jannet orozco', 'allrightsreserved', 1446670410, 1446670410, 0, NULL),
+(136, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'bb8580229f92f631d527f29d62bc06f6ce75bf29', 83, 'user', 'draft', 255187989, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1446670410, 1446670410, 0, NULL),
+(137, 'c09433a85d3fac8cb871a7e65d76589c4a93a916', '67da853c45f713b1fe6d78affa3fc99bb761af09', 1, 'core', 'preview', 0, '/thumb/', '54c2f1a1eb6f12d681a5c7078421a5500cee02ad', NULL, 15903, 'image/png', 0, NULL, NULL, NULL, 1446670411, 1446670411, 0, NULL),
+(140, '54c2f1a1eb6f12d681a5c7078421a5500cee02ad', '8643909f3fa995a80250e8c2f60c240701ddee8b', 180, 'assignsubmission_file', 'submission_files', 14, '/', 'Tulipanes.jpg', 10, 620888, 'image/jpeg', 0, 'Tulips.jpg', 'jannet orozco', 'allrightsreserved', 1446670410, 1446670461, 0, NULL),
+(139, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '9d89952d6c863c7fd30efb37bdff2e1dfbfeca5f', 180, 'assignsubmission_file', 'submission_files', 14, '/', '.', 10, 0, 'document/unknown', 0, NULL, NULL, NULL, 1446670410, 1446670410, 0, NULL),
+(141, 'f5f8ad26819a471318d24631fa5055036712a87e', 'd14f1a9fdd14453c6eae3751dd094a0c0f4cf36d', 24, 'user', 'draft', 681304931, '/', 'flor.jpg', 3, 879394, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:17:"Chrysanthemum.jpg";}', 'Nayn Ek', 'allrightsreserved', 1446838669, 1446838669, 0, NULL),
+(142, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'b9bf4606fa0b6463e2d7dfe73e1bba6be4781cf8', 24, 'user', 'draft', 681304931, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1446838669, 1446838669, 0, NULL),
+(143, '1f8c1598b0bf0510c6a7297cd8b2e1e560cf5836', '2d29ca5b1819f5aa8fbaad976d616b6704024281', 1, 'core', 'preview', 0, '/thumb/', 'f5f8ad26819a471318d24631fa5055036712a87e', NULL, 17084, 'image/png', 0, NULL, NULL, NULL, 1446838669, 1446838669, 0, NULL),
+(144, 'd743c9a90aa10b8ce3794e112fb11d0352161d3e', 'd055cee01613ed50430aaaa049f4a4afd9ae3f8f', 24, 'user', 'private', 0, '/', 'House.jpg', NULL, 16, 'image/jpeg', 0, NULL, NULL, NULL, 1446840675, 1446840675, 0, NULL),
+(145, '54c2f1a1eb6f12d681a5c7078421a5500cee02ad', '4a991ad66b9cd097792f1a233bde4cbb578486f9', 83, 'user', 'draft', 10467530, '/', 'Tulipanes.jpg', 10, 620888, 'image/jpeg', 0, 'O:8:"stdClass":2:{s:6:"source";s:10:"Tulips.jpg";s:8:"original";s:252:"YTo2OntzOjk6ImNvbnRleHRpZCI7aToxODA7czo5OiJjb21wb25lbnQiO3M6MjE6ImFzc2lnbnN1Ym1pc3Npb25fZmlsZSI7czo2OiJpdGVtaWQiO2k6MTQ7czo4OiJmaWxlYXJlYSI7czoxNjoic3VibWlzc2lvbl9maWxlcyI7czo4OiJmaWxlcGF0aCI7czoxOiIvIjtzOjg6ImZpbGVuYW1lIjtzOjEzOiJUdWxpcGFuZXMuanBnIjt9";}', 'jannet orozco', 'allrightsreserved', 1446670410, 1446670461, 0, NULL),
+(146, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '2129ba0d53b1585e9284f509adce11cf83bd4f41', 83, 'user', 'draft', 10467530, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1447092705, 1447092705, 0, NULL),
+(147, 'df7be9dc4f467187783aca68c7ce98e4df2172d0', 'ef680b0c77185707467edae5b60e1971f72a4c77', 83, 'user', 'draft', 125427246, '/', 'ping.jpg', 10, 777835, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:12:"Penguins.jpg";}', 'jannet orozco', 'allrightsreserved', 1447094098, 1447094098, 0, NULL),
+(148, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '482816be66b87c71fb64431442846486ce7cc8c6', 83, 'user', 'draft', 125427246, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1447094098, 1447094098, 0, NULL),
+(149, 'df7be9dc4f467187783aca68c7ce98e4df2172d0', '2c6dcddb57f0a79e9349e6b74e446ae5334a9b92', 132, 'assignsubmission_file', 'submission_files', 16, '/', 'ping.jpg', 10, 777835, 'image/jpeg', 0, 'Penguins.jpg', 'jannet orozco', 'allrightsreserved', 1447094098, 1447094132, 0, NULL),
+(150, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '01a58dc81b2e0a39232a4fac222ed569f7479a2c', 132, 'assignsubmission_file', 'submission_files', 16, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1447094098, 1447094132, 0, NULL),
+(151, 'f5f8ad26819a471318d24631fa5055036712a87e', '3e773c5e47185cd705c407f9e1b2d4095b2263c0', 83, 'user', 'draft', 15106202, '/', 'rrrr.jpg', 10, 879394, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:17:"Chrysanthemum.jpg";}', 'jannet orozco', 'allrightsreserved', 1447094940, 1447094940, 0, NULL),
+(152, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'd86d8df5d3cb7804a89e563ea83e0d75a558d395', 83, 'user', 'draft', 15106202, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1447094940, 1447094940, 0, NULL),
+(153, 'f5f8ad26819a471318d24631fa5055036712a87e', 'f4f707205a32ddc72335f09b1e58ae72c33280a2', 177, 'assignsubmission_file', 'submission_files', 15, '/', 'rrrr.jpg', 10, 879394, 'image/jpeg', 0, 'Chrysanthemum.jpg', 'jannet orozco', 'allrightsreserved', 1447094940, 1447095011, 0, NULL),
+(154, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '337bf2416275cebfc030e70fb13ecda35cab21b5', 177, 'assignsubmission_file', 'submission_files', 15, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1447094940, 1447095011, 0, NULL),
+(155, 'f5f8ad26819a471318d24631fa5055036712a87e', '0b6340d848cb60126463065ecde8be1134ae3781', 83, 'user', 'draft', 538330078, '/', 'rrrr.jpg', 10, 879394, 'image/jpeg', 0, 'O:8:"stdClass":2:{s:6:"source";s:17:"Chrysanthemum.jpg";s:8:"original";s:244:"YTo2OntzOjk6ImNvbnRleHRpZCI7aToxNzc7czo5OiJjb21wb25lbnQiO3M6MjE6ImFzc2lnbnN1Ym1pc3Npb25fZmlsZSI7czo2OiJpdGVtaWQiO2k6MTU7czo4OiJmaWxlYXJlYSI7czoxNjoic3VibWlzc2lvbl9maWxlcyI7czo4OiJmaWxlcGF0aCI7czoxOiIvIjtzOjg6ImZpbGVuYW1lIjtzOjg6InJycnIuanBnIjt9";}', 'jannet orozco', 'allrightsreserved', 1447094940, 1447095011, 0, NULL),
+(156, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '7f228eb0b8766a0d3d2e50e3ea23206be43ece58', 83, 'user', 'draft', 538330078, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1447095075, 1447095075, 0, NULL),
+(157, 'f5f8ad26819a471318d24631fa5055036712a87e', 'd16b5d10fbe5bf3ec8ad4bc0b55066af8a101095', 83, 'user', 'draft', 948883056, '/', 'rrrr.jpg', 10, 879394, 'image/jpeg', 0, 'O:8:"stdClass":2:{s:6:"source";s:17:"Chrysanthemum.jpg";s:8:"original";s:244:"YTo2OntzOjk6ImNvbnRleHRpZCI7aToxNzc7czo5OiJjb21wb25lbnQiO3M6MjE6ImFzc2lnbnN1Ym1pc3Npb25fZmlsZSI7czo2OiJpdGVtaWQiO2k6MTU7czo4OiJmaWxlYXJlYSI7czoxNjoic3VibWlzc2lvbl9maWxlcyI7czo4OiJmaWxlcGF0aCI7czoxOiIvIjtzOjg6ImZpbGVuYW1lIjtzOjg6InJycnIuanBnIjt9";}', 'jannet orozco', 'allrightsreserved', 1447094940, 1447095011, 0, NULL),
+(158, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '32495a637ff04c78bf7dec1166651f42ad6c39ed', 83, 'user', 'draft', 948883056, '/', '.', 10, 0, NULL, 0, NULL, NULL, NULL, 1447095083, 1447095083, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_grade_grades`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_grade_grades` (
+  `id` bigint(10) NOT NULL,
+  `itemid` bigint(10) NOT NULL,
+  `userid` bigint(10) NOT NULL,
+  `rawgrade` decimal(10,5) DEFAULT NULL,
+  `rawgrademax` decimal(10,5) NOT NULL DEFAULT '100.00000',
+  `rawgrademin` decimal(10,5) NOT NULL DEFAULT '0.00000',
+  `rawscaleid` bigint(10) DEFAULT NULL,
+  `usermodified` bigint(10) DEFAULT NULL,
+  `finalgrade` decimal(10,5) DEFAULT NULL,
+  `hidden` bigint(10) NOT NULL DEFAULT '0',
+  `locked` bigint(10) NOT NULL DEFAULT '0',
+  `locktime` bigint(10) NOT NULL DEFAULT '0',
+  `exported` bigint(10) NOT NULL DEFAULT '0',
+  `overridden` bigint(10) NOT NULL DEFAULT '0',
+  `excluded` bigint(10) NOT NULL DEFAULT '0',
+  `feedback` longtext,
+  `feedbackformat` bigint(10) NOT NULL DEFAULT '0',
+  `information` longtext,
+  `informationformat` bigint(10) NOT NULL DEFAULT '0',
+  `timecreated` bigint(10) DEFAULT NULL,
+  `timemodified` bigint(10) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='grade_grades  This table keeps individual grades for each us';
+
+--
+-- Volcado de datos para la tabla `mdl_grade_grades`
+--
+
+INSERT INTO `mdl_grade_grades` (`id`, `itemid`, `userid`, `rawgrade`, `rawgrademax`, `rawgrademin`, `rawscaleid`, `usermodified`, `finalgrade`, `hidden`, `locked`, `locktime`, `exported`, `overridden`, `excluded`, `feedback`, `feedbackformat`, `information`, `informationformat`, `timecreated`, `timemodified`) VALUES
+(1, 6, 3, '88.00000', '100.00000', '0.00000', NULL, 3, '88.00000', 0, 0, 0, 0, 0, 0, NULL, 1, NULL, 0, NULL, 1443469344),
+(2, 5, 3, NULL, '100.00000', '0.00000', NULL, NULL, '88.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(3, 6, 9, '100.00000', '100.00000', '0.00000', NULL, 3, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 1, NULL, 0, NULL, 1443469175),
+(4, 5, 9, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(5, 11, 9, '59.00000', '100.00000', '0.00000', NULL, 3, '59.00000', 0, 0, 0, 0, 0, 0, 'esta muy mal', 0, NULL, 0, NULL, 1443547220),
+(6, 7, 9, NULL, '100.00000', '0.00000', NULL, NULL, '68.46154', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(11, 12, 11, '100.00000', '100.00000', '0.00000', NULL, 3, '30.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, 1443468718),
+(7, 12, 10, '100.00000', '30.00000', '0.00000', NULL, 10, '30.00000', 0, 0, 0, 0, 0, 0, 'xxxxxxxxxxxxxxxxxxxxxxx', 0, NULL, 0, 1446651906, 1446237796),
+(8, 7, 10, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(9, 12, 12, '95.00000', '30.00000', '0.00000', NULL, 12, '30.00000', 0, 0, 0, 0, 0, 0, '<p>comentario calificacion 28/10/15</p>', 1, NULL, 0, 1446652972, 1446048935),
+(10, 7, 12, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(12, 7, 11, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(13, 17, 3, '60.00000', '100.00000', '0.00000', NULL, 3, '60.00000', 0, 0, 0, 0, 0, 0, 'NO Se Envia', 0, NULL, 0, NULL, 1443800578),
+(14, 7, 3, NULL, '100.00000', '0.00000', NULL, NULL, '60.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(15, 12, 9, '87.00000', '100.00000', '0.00000', NULL, 3, '30.00000', 0, 0, 0, 0, 0, 0, 'Falto informacion', 0, NULL, 0, NULL, 1446073821),
+(16, 12, 14, '94.00000', '100.00000', '0.00000', NULL, 3, '30.00000', 0, 0, 0, 0, 0, 0, '<p>este es mi comentario 08/10/15</p>', 1, NULL, 0, NULL, 1444319459),
+(17, 7, 14, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(18, 17, 10, NULL, '100.00000', '0.00000', NULL, 10, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1445963786, NULL),
+(19, 61, 10, '100.00000', '100.00000', '0.00000', NULL, 3, '100.00000', 0, 0, 0, 0, 0, 0, 'hola hola 007', 0, NULL, 0, NULL, 1446146152),
+(20, 62, 10, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(21, 65, 10, NULL, '100.00000', '0.00000', NULL, 10, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1446234343, NULL),
+(22, 67, 10, NULL, '100.00000', '0.00000', NULL, 10, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1446670461, NULL),
+(23, 19, 10, NULL, '100.00000', '0.00000', NULL, 10, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1447094132, NULL),
+(24, 63, 10, NULL, '87.00000', '0.00000', NULL, 10, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1447095011, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_message`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_message` (
+  `id` bigint(10) NOT NULL,
+  `useridfrom` bigint(10) NOT NULL DEFAULT '0',
+  `useridto` bigint(10) NOT NULL DEFAULT '0',
+  `subject` longtext,
+  `fullmessage` longtext,
+  `fullmessageformat` smallint(4) DEFAULT '0',
+  `fullmessagehtml` longtext,
+  `smallmessage` longtext,
+  `notification` tinyint(1) DEFAULT '0',
+  `contexturl` longtext,
+  `contexturlname` longtext,
+  `timecreated` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COMMENT='Stores all unread messages';
+
+--
+-- Volcado de datos para la tabla `mdl_message`
+--
+
+INSERT INTO `mdl_message` (`id`, `useridfrom`, `useridto`, `subject`, `fullmessage`, `fullmessageformat`, `fullmessagehtml`, `smallmessage`, `notification`, `contexturl`, `contexturlname`, `timecreated`) VALUES
+(1, 3, 5, 'New message from Nayn Ek', 'hola\n\n---------------------------------------------------------------------\nThis is a copy of a message sent to you at "Moodle". Go to http://192.168.43.150/moodle2/moodle/message/index.php?user=5&id=3 to reply.', 1, 'hola<br /><br />---------------------------------------------------------------------<br />This is a copy of a message sent to you at "Moodle". Go to http://192.168.43.150/moodle2/moodle/message/index.php?user=5&id=3 to reply.', 'hola', 0, NULL, NULL, 1422468926),
+(25, 3, 7, 'Mensaje nuevo de (Nayn Ek)', 'estoy probando los mensajes\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=7&id=3 para contestar.', 1, 'estoy probando los mensajes<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=7&id=3 para contestar.', 'estoy probando los mensajes', 0, NULL, NULL, 1431453596),
+(27, 3, 7, 'Mensaje nuevo de (Nayn Ek)', 'holaaa XD\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=7&id=3 para contestar.', 1, 'holaaa XD<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=7&id=3 para contestar.', 'holaaa XD', 0, NULL, NULL, 1432138430),
+(63, -10, 10, 'Usted ha realizado su entrega de la tarea tarea con archivo', 'Admon Redes -> Tarea -> tarea con archivo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea con archivo\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=78\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=78">tarea con archivo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea con archivo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=78"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea con archivo', 1, 'http://localhost/moodle/mod/assign/view.php?id=78', 'tarea con archivo', 1446670415);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mdl_message_read`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_message_read` (
+  `id` bigint(10) NOT NULL,
+  `useridfrom` bigint(10) NOT NULL DEFAULT '0',
+  `useridto` bigint(10) NOT NULL DEFAULT '0',
+  `subject` longtext,
+  `fullmessage` longtext,
+  `fullmessageformat` smallint(4) DEFAULT '0',
+  `fullmessagehtml` longtext,
+  `smallmessage` longtext,
+  `notification` tinyint(1) DEFAULT '0',
+  `contexturl` longtext,
+  `contexturlname` longtext,
+  `timecreated` bigint(10) NOT NULL DEFAULT '0',
+  `timeread` bigint(10) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COMMENT='Stores all messages that have been read';
+
+--
+-- Volcado de datos para la tabla `mdl_message_read`
+--
+
+INSERT INTO `mdl_message_read` (`id`, `useridfrom`, `useridto`, `subject`, `fullmessage`, `fullmessageformat`, `fullmessagehtml`, `smallmessage`, `notification`, `contexturl`, `contexturlname`, `timecreated`, `timeread`) VALUES
+(1, 5, 3, 'New message from jose cortes', 'hola\n\n\n---------------------------------------------------------------------\nThis is a copy of a message sent to you at "Moodle". Go to http://192.168.43.150/moodle2/moodle/message/index.php?user=3&id=5 to reply.', 1, 'hola<br /><br /><br />---------------------------------------------------------------------<br />This is a copy of a message sent to you at "Moodle". Go to http://192.168.43.150/moodle2/moodle/message/index.php?user=3&id=5 to reply.', 'hola<br />', 0, NULL, NULL, 1422468931, 1424276092),
+(2, 5, 3, 'New message from jose cortes', 'Tenemos que ir a la clase de landa\n\n---------------------------------------------------------------------\nThis is a copy of a message sent to you at "Moodle". Go to http://192.168.43.150/moodle2/moodle/message/index.php?user=3&id=5 to reply.', 1, 'Tenemos que ir a la clase de landa<br /><br />---------------------------------------------------------------------<br />This is a copy of a message sent to you at "Moodle". Go to http://192.168.43.150/moodle2/moodle/message/index.php?user=3&id=5 to reply.', 'Tenemos que ir a la clase de landa', 0, NULL, NULL, 1422469083, 1424276092),
+(3, 6, 3, 'New message from pepito tabito', 'Hola\n\n---------------------------------------------------------------------\nThis is a copy of a message sent to you at "Moodle". Go to http://localhost/moodle2/moodle/message/index.php?user=3&id=6 to reply.', 1, 'Hola<br /><br />---------------------------------------------------------------------<br />This is a copy of a message sent to you at "Moodle". Go to http://localhost/moodle2/moodle/message/index.php?user=3&id=6 to reply.', 'Hola', 0, NULL, NULL, 1424278641, 1424278658),
+(4, 6, 3, 'New message from pepito tabito', 'Â¿QuÃ© tal?\n\n---------------------------------------------------------------------\nThis is a copy of a message sent to you at "Moodle". Go to http://localhost/moodle2/moodle/message/index.php?user=3&id=6 to reply.', 1, 'Â¿QuÃ© tal?<br /><br />---------------------------------------------------------------------<br />This is a copy of a message sent to you at "Moodle". Go to http://localhost/moodle2/moodle/message/index.php?user=3&id=6 to reply.', 'Â¿QuÃ© tal?', 0, NULL, NULL, 1424283425, 1424283438),
+(8, 2, 2, 'Existen actualizaciones disponibles para Moodle (http://naynweb.260mb.net/moodle)', 'Notificaciones de actualizaciÃ³n\n\nÂ¡Hay una nueva versiÃ³n de Moodle disponible!\nMoodle 2.8.5+ (Build: 20150501) VersiÃ³n 2014111005.12 (VersiÃ³n estable)\nMoodle 2.7.7+ (Build: 20150501) VersiÃ³n 2014051207.11 (VersiÃ³n estable)\n\nVea http://naynweb.260mb.net/moodle/admin/index.php para mÃ¡s detalles\nSu sitio Moodle http://naynweb.260mb.net/moodle estÃ¡ configurado para revisar automÃ¡ticamente las actualizaciones disponibles. Usted estÃ¡ recibiendo este mensaje por ser el administrador del sitio. Usted puede deshabilitar las revisiones automÃ¡ticas de actualizaciones disponibles en la secciÃ³n sobre AdministraciÃ³n del Sitio del bloque de AdministraciÃ³n. Usted puede ajustar el envÃ­o de este mensaje por medio de sus configuraciones personales para mensajes en la secciÃ³n de los ajustes de mi perfil.\n', 2, '<h1>Notificaciones de actualizaciÃ³n</h1>\n<h2>Â¡Hay una nueva versiÃ³n de Moodle disponible!</h2>\n<ul>\n<li><strong>Moodle 2.8.5+ (Build: 20150501)</strong> VersiÃ³n 2014111005.12 (VersiÃ³n estable)</li>\n<li><strong>Moodle 2.7.7+ (Build: 20150501)</strong> VersiÃ³n 2014051207.11 (VersiÃ³n estable)</li>\n</ul>\n<p>Vea <a href="http://naynweb.260mb.net/moodle/admin/index.php">http://naynweb.260mb.net/moodle/admin/index.php</a> para mÃ¡s detalles</p>\n<footer><p style="font-size:smaller; color:#333;">Su sitio Moodle <a href="http://naynweb.260mb.net/moodle">http://naynweb.260mb.net/moodle</a> estÃ¡ configurado para revisar automÃ¡ticamente las actualizaciones disponibles. Usted estÃ¡ recibiendo este mensaje por ser el administrador del sitio. Usted puede deshabilitar las revisiones automÃ¡ticas de actualizaciones disponibles en la secciÃ³n sobre AdministraciÃ³n del Sitio del bloque de AdministraciÃ³n. Usted puede ajustar el envÃ­o de este mensaje por medio de sus configuraciones personales para mensajes en la secciÃ³n de los ajustes de mi perfil.</p></footer>', 'Notificaciones de actualizaciÃ³n', 1, NULL, NULL, 1430844835, 1430844835),
+(6, 3, 7, 'Mensaje nuevo de (Nayn Ek)', 'hola\n\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=7&id=3 para contestar.', 1, 'hola<br /><br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=7&id=3 para contestar.', 'hola<br />', 0, NULL, NULL, 1429038406, 1429290203),
+(9, -10, 3, 'Usted ha realizado su entrega de la tarea Tarea 1', 'HTML -> Tarea -> Tarea 1\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Tarea 1\n\nPuede ver el estatus de su entrega en\n\nhttp://naynweb.260mb.net/moodle/mod/assign/view.php?id=8\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://naynweb.260mb.net/moodle/course/view.php?id=6">HTML</a> -><a href="http://naynweb.260mb.net/moodle/mod/assign/index.php?id=6">Tarea</a> -><a href="http://naynweb.260mb.net/moodle/mod/assign/view.php?id=8">Tarea 1</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Tarea 1</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://naynweb.260mb.net/moodle/mod/assign/view.php?id=8"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Tarea 1', 1, 'http://naynweb.260mb.net/moodle/mod/assign/view.php?id=8', 'Tarea 1', 1430848061, 1430848063),
+(10, -10, 9, 'Usted ha realizado su entrega de la tarea Tarea 1', 'HTML -> Tarea -> Tarea 1\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Tarea 1\n\nPuede ver el estatus de su entrega en\n\nhttp://naynweb.260mb.net/moodle/mod/assign/view.php?id=8\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://naynweb.260mb.net/moodle/course/view.php?id=6">HTML</a> -><a href="http://naynweb.260mb.net/moodle/mod/assign/index.php?id=6">Tarea</a> -><a href="http://naynweb.260mb.net/moodle/mod/assign/view.php?id=8">Tarea 1</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Tarea 1</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://naynweb.260mb.net/moodle/mod/assign/view.php?id=8"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Tarea 1', 1, 'http://naynweb.260mb.net/moodle/mod/assign/view.php?id=8', 'Tarea 1', 1430848183, 1430848183),
+(11, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'hola\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'hola<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 'hola', 0, NULL, NULL, 1431014532, 1431018582),
+(12, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'hey\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'hey <br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 'hey ', 0, NULL, NULL, 1431014574, 1431018582),
+(13, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'como estas?\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'como estas?<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 'como estas?', 0, NULL, NULL, 1431104300, 1431104426),
+(14, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'bien aqui\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'bien aqui<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 'bien aqui', 0, NULL, NULL, 1431104459, 1431104479),
+(15, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'hoo\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'hoo<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 'hoo', 0, NULL, NULL, 1431104658, 1431104667),
+(16, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'hola\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'hola<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 'hola', 0, NULL, NULL, 1431104646, 1431104667),
+(17, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'hola\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'hola<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 'hola', 0, NULL, NULL, 1431359124, 1431359469),
+(18, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'que onda\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'que onda<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=9&id=3 para contestar.', 'que onda', 0, NULL, NULL, 1431359042, 1431359469),
+(19, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'que tal\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=3&id=9 para contestar.', 0, '', 'que tal', 0, NULL, NULL, 1431018590, 1432644310),
+(20, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'hola como estas\r\n\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=3&id=9 para contestar.', 0, '', 'hola como estas\r\n', 0, NULL, NULL, 1431104437, 1432644311),
+(21, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'hola\r\n\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=3&id=9 para contestar.', 0, '', 'hola\r\n', 0, NULL, NULL, 1431104687, 1432644311),
+(22, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'vamos por las tortas\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=3&id=9 para contestar.', 0, '', 'vamos por las tortas', 0, NULL, NULL, 1431104478, 1432644311),
+(23, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'k paso\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=3&id=9 para contestar.', 1, 'k paso <br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=3&id=9 para contestar.', 'k paso ', 0, NULL, NULL, 1431359124, 1432644311),
+(24, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'No estoy, me hablo mi mama\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=3&id=9 para contestar.', 1, 'No estoy, me hablo mi mama<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.260mb.net/moodle/message/index.php?user=3&id=9 para contestar.', 'No estoy, me hablo mi mama', 0, NULL, NULL, 1431359138, 1432644311),
+(25, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'que cuentas?\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=9 para contestar.', 1, 'que cuentas?<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=9 para contestar.', 'que cuentas?', 0, NULL, NULL, 1431453322, 1432644311),
+(26, 7, 3, 'Mensaje nuevo de (Fernando PerÃ©z)', 'hola\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=7 para contestar.', 1, 'hola<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=7 para contestar.', 'hola', 0, NULL, NULL, 1431453516, 1432644844),
+(27, 7, 3, 'Mensaje nuevo de (Fernando PerÃ©z)', 'genial\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=7 para contestar.', 1, 'genial<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=7 para contestar.', 'genial', 0, NULL, NULL, 1431453720, 1432644844),
+(28, -10, 9, 'Usted ha realizado su entrega de la tarea tarea 2.1', 'Admon Redes -> Tarea -> tarea 2.1\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea 2.1\n\nPuede ver el estatus de su entrega en\n\nhttp://naynweb.16mb.com/moodle/mod/assign/view.php?id=13\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://naynweb.16mb.com/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=13">tarea 2.1</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea 2.1</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=13"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea 2.1', 1, 'http://naynweb.16mb.com/moodle/mod/assign/view.php?id=13', 'tarea 2.1', 1441043360, 1441043360),
+(29, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'aqui probando los mensajes\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'aqui probando los mensajes<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 'aqui probando los mensajes', 0, NULL, NULL, 1431453368, 1441991282),
+(30, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'hey\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'hey<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 'hey', 0, NULL, NULL, 1441041181, 1441991282),
+(31, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'ftghuu\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'ftghuu<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 'ftghuu', 0, NULL, NULL, 1434559683, 1441991282),
+(32, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'Jvvbb\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'Jvvbb<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 'Jvvbb', 0, NULL, NULL, 1432581586, 1441991282),
+(33, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'hola\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=9 para contestar.', 1, 'hola<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=9 para contestar.', 'hola', 0, NULL, NULL, 1442932966, 1442938016),
+(34, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'hola\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=9 para contestar.', 0, '', 'hola', 0, NULL, NULL, 1441991294, 1442938016),
+(35, 9, 3, 'Mensaje nuevo de (Alan Blanco)', 'hola\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=9 para contestar.', 1, 'hola<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=9 para contestar.', 'hola', 0, NULL, NULL, 1442932944, 1442938016),
+(36, -10, 10, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://naynweb.16mb.com/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://naynweb.16mb.com/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1443112088, 1443112088),
+(37, -10, 12, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://naynweb.16mb.com/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://naynweb.16mb.com/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1443197417, 1443197417),
+(38, 3, 3, 'Mensaje nuevo de (Nayn Ek)', 'df\n\n\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=3 para contestar.', 1, 'df<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=3 para contestar.', 'df<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />', 0, NULL, NULL, 1443539207, 1443539207),
+(39, 3, 3, 'Mensaje nuevo de (Nayn Ek)', 'df\n\n\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=3 para contestar.', 1, 'df<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=3 para contestar.', 'df<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />', 0, NULL, NULL, 1443539208, 1443539208),
+(40, 3, 3, 'Mensaje nuevo de (Nayn Ek)', 'df\n\n\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=3 para contestar.', 1, 'df<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=3 para contestar.', 'df<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />', 0, NULL, NULL, 1443539208, 1443539208),
+(41, 3, 3, 'Mensaje nuevo de (Nayn Ek)', 'hola\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=3 para contestar.', 1, 'hola<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=3&id=3 para contestar.', 'hola', 0, NULL, NULL, 1443539300, 1443539300),
+(42, -10, 3, 'Usted ha realizado su entrega de la tarea Cuestionario de Protocolos', 'Admon Redes -> Tarea -> Cuestionario de Protocolos\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Cuestionario de Protocolos\n\nPuede ver el estatus de su entrega en\n\nhttp://naynweb.16mb.com/moodle/mod/assign/view.php?id=24\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://naynweb.16mb.com/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=24">Cuestionario de Protocolos</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Cuestionario de Protocolos</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=24"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Cuestionario de Protocolos', 1, 'http://naynweb.16mb.com/moodle/mod/assign/view.php?id=24', 'Cuestionario de Protocolos', 1443800412, 1443800412),
+(43, -10, 9, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://naynweb.16mb.com/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://naynweb.16mb.com/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1444141381, 1444141381),
+(44, -10, 14, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://naynweb.16mb.com/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://naynweb.16mb.com/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://naynweb.16mb.com/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1444243575, 1444243576),
+(45, 3, 9, 'Mensaje nuevo de (Nayn Ek)', 'hola alan\n\n---------------------------------------------------------------------\nÃ‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 1, 'hola alan<br /><br />---------------------------------------------------------------------<br />Ã‰sta es una copia del mensaje que se le ha enviado en "Moodle". Vaya a http://naynweb.16mb.com/moodle/message/index.php?user=9&id=3 para contestar.', 'hola alan', 0, NULL, NULL, 1443539222, 1444320215),
+(46, -10, 10, 'Usted ha realizado su entrega de la tarea Cuestionario de Protocolos', 'Admon Redes -> Tarea -> Cuestionario de Protocolos\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Cuestionario de Protocolos\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=24\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=24">Cuestionario de Protocolos</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Cuestionario de Protocolos</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=24"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Cuestionario de Protocolos', 1, 'http://localhost/moodle/mod/assign/view.php?id=24', 'Cuestionario de Protocolos', 1445963526, 1445963527),
+(47, -10, 10, 'Usted ha realizado su entrega de la tarea Cuestionario de Protocolos', 'Admon Redes -> Tarea -> Cuestionario de Protocolos\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Cuestionario de Protocolos\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=24\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=24">Cuestionario de Protocolos</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Cuestionario de Protocolos</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=24"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Cuestionario de Protocolos', 1, 'http://localhost/moodle/mod/assign/view.php?id=24', 'Cuestionario de Protocolos', 1445963654, 1445963654),
+(48, -10, 10, 'Usted ha realizado su entrega de la tarea Cuestionario de Protocolos', 'Admon Redes -> Tarea -> Cuestionario de Protocolos\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Cuestionario de Protocolos\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=24\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=24">Cuestionario de Protocolos</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Cuestionario de Protocolos</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=24"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Cuestionario de Protocolos', 1, 'http://localhost/moodle/mod/assign/view.php?id=24', 'Cuestionario de Protocolos', 1445963786, 1445963786),
+(49, -10, 10, 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 'Mantenimiento -> Tarea -> tarea creada en novedades de  mantenimiento\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea creada en novedades de  mantenimiento\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=74\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=11">Mantenimiento</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=11">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=74">tarea creada en novedades de  mantenimiento</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea creada en novedades de  mantenimiento</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=74"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 1, 'http://localhost/moodle/mod/assign/view.php?id=74', 'tarea creada en novedades de  mantenimiento', 1445964995, 1445964995),
+(50, -10, 10, 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 'Mantenimiento -> Tarea -> tarea creada en novedades de  mantenimiento\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea creada en novedades de  mantenimiento\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=74\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=11">Mantenimiento</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=11">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=74">tarea creada en novedades de  mantenimiento</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea creada en novedades de  mantenimiento</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=74"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 1, 'http://localhost/moodle/mod/assign/view.php?id=74', 'tarea creada en novedades de  mantenimiento', 1445965079, 1445965080),
+(51, -10, 10, 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 'Mantenimiento -> Tarea -> tarea creada en novedades de  mantenimiento\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea creada en novedades de  mantenimiento\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=74\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=11">Mantenimiento</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=11">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=74">tarea creada en novedades de  mantenimiento</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea creada en novedades de  mantenimiento</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=74"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 1, 'http://localhost/moodle/mod/assign/view.php?id=74', 'tarea creada en novedades de  mantenimiento', 1445967416, 1445967416),
+(52, -10, 10, 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 'Mantenimiento -> Tarea -> tarea creada en novedades de  mantenimiento\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea creada en novedades de  mantenimiento\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=74\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=11">Mantenimiento</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=11">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=74">tarea creada en novedades de  mantenimiento</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea creada en novedades de  mantenimiento</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=74"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 1, 'http://localhost/moodle/mod/assign/view.php?id=74', 'tarea creada en novedades de  mantenimiento', 1445967539, 1445967539),
+(53, -10, 10, 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 'Mantenimiento -> Tarea -> tarea creada en novedades de  mantenimiento\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea creada en novedades de  mantenimiento\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=74\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=11">Mantenimiento</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=11">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=74">tarea creada en novedades de  mantenimiento</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea creada en novedades de  mantenimiento</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=74"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 1, 'http://localhost/moodle/mod/assign/view.php?id=74', 'tarea creada en novedades de  mantenimiento', 1445967681, 1445967681),
+(54, -10, 10, 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 'Mantenimiento -> Tarea -> tarea creada en novedades de  mantenimiento\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea creada en novedades de  mantenimiento\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=74\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=11">Mantenimiento</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=11">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=74">tarea creada en novedades de  mantenimiento</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea creada en novedades de  mantenimiento</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=74"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea creada en novedades de  mantenimiento', 1, 'http://localhost/moodle/mod/assign/view.php?id=74', 'tarea creada en novedades de  mantenimiento', 1445976877, 1445976877),
+(55, -10, 10, 'Usted ha realizado su entrega de la tarea tarea intentos', 'Admon Redes -> Tarea -> tarea intentos\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea intentos\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=76\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=76">tarea intentos</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea intentos</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=76"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea intentos', 1, 'http://localhost/moodle/mod/assign/view.php?id=76', 'tarea intentos', 1446234253, 1446234266),
+(56, -10, 10, 'Usted ha realizado su entrega de la tarea tarea intentos', 'Admon Redes -> Tarea -> tarea intentos\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea intentos\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=76\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=76">tarea intentos</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea intentos</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=76"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea intentos', 1, 'http://localhost/moodle/mod/assign/view.php?id=76', 'tarea intentos', 1446234300, 1446234306),
+(57, -10, 10, 'Usted ha realizado su entrega de la tarea tarea intentos', 'Admon Redes -> Tarea -> tarea intentos\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea intentos\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=76\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=76">tarea intentos</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea intentos</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=76"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea intentos', 1, 'http://localhost/moodle/mod/assign/view.php?id=76', 'tarea intentos', 1446234343, 1446234346),
+(58, -10, 10, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://localhost/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1446237797, 1446237809),
+(59, -10, 10, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://localhost/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1446237999, 1446238006),
+(60, -10, 10, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://localhost/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1446569081, 1446569081),
+(61, -10, 10, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://localhost/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1446651711, 1446651712);
+INSERT INTO `mdl_message_read` (`id`, `useridfrom`, `useridto`, `subject`, `fullmessage`, `fullmessageformat`, `fullmessagehtml`, `smallmessage`, `notification`, `contexturl`, `contexturlname`, `timecreated`, `timeread`) VALUES
+(62, -10, 10, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://localhost/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1446651906, 1446651906),
+(63, -10, 12, 'Usted ha realizado su entrega de la tarea Monitoreo', 'Admon Redes -> Tarea -> Monitoreo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea Monitoreo\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=17\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=17">Monitoreo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>Monitoreo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=17"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea Monitoreo', 1, 'http://localhost/moodle/mod/assign/view.php?id=17', 'Monitoreo', 1446652972, 1446652972),
+(64, -10, 10, 'Usted ha realizado su entrega de la tarea tarea con archivo', 'Admon Redes -> Tarea -> tarea con archivo\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea tarea con archivo\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=78\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=78">tarea con archivo</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>tarea con archivo</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=78"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea tarea con archivo', 1, 'http://localhost/moodle/mod/assign/view.php?id=78', 'tarea con archivo', 1446670461, 1446670464),
+(65, -10, 10, 'Usted ha realizado su entrega de la tarea 7 capas', 'Admon Redes -> Tarea -> 7 capas\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea 7 capas\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=30\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=30">7 capas</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>7 capas</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=30"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea 7 capas', 1, 'http://localhost/moodle/mod/assign/view.php?id=30', '7 capas', 1447094132, 1447094137),
+(66, -10, 10, 'Usted ha realizado su entrega de la tarea rrrrrrrrr', 'Admon Redes -> Tarea -> rrrrrrrrr\n---------------------------------------------------------------------\nUsted ha realizado una entrega en la tarea rrrrrrrrr\n\nPuede ver el estatus de su entrega en\n\nhttp://localhost/moodle/mod/assign/view.php?id=75\n\n---------------------------------------------------------------------\n', 2, '<p><font face="sans-serif"><a href="http://localhost/moodle/course/view.php?id=8">Admon Redes</a> -><a href="http://localhost/moodle/mod/assign/index.php?id=8">Tarea</a> -><a href="http://localhost/moodle/mod/assign/view.php?id=75">rrrrrrrrr</a></font></p><hr /><font face="sans-serif"><p>Usted ha realizado una entrega en la tarea ''<i>rrrrrrrrr</i>''.</p>\n<p>Puede ver el estatus de su entrega en <a href="http://localhost/moodle/mod/assign/view.php?id=75"></a>.</p></p></font><hr />', 'Usted ha realizado su entrega de la tarea rrrrrrrrr', 1, 'http://localhost/moodle/mod/assign/view.php?id=75', 'rrrrrrrrr', 1447095011, 1447095018);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `mdl_assign`
+--
+ALTER TABLE `mdl_assign`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assi_cou_ix` (`course`),
+  ADD KEY `mdl_assi_tea_ix` (`teamsubmissiongroupingid`);
+
+--
+-- Indices de la tabla `mdl_assignfeedback_comments`
+--
+ALTER TABLE `mdl_assignfeedback_comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assicomm_ass_ix` (`assignment`),
+  ADD KEY `mdl_assicomm_gra_ix` (`grade`);
+
+--
+-- Indices de la tabla `mdl_assignfeedback_editpdf_annot`
+--
+ALTER TABLE `mdl_assignfeedback_editpdf_annot`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assieditanno_grapag_ix` (`gradeid`,`pageno`),
+  ADD KEY `mdl_assieditanno_gra_ix` (`gradeid`);
+
+--
+-- Indices de la tabla `mdl_assignfeedback_editpdf_cmnt`
+--
+ALTER TABLE `mdl_assignfeedback_editpdf_cmnt`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assieditcmnt_grapag_ix` (`gradeid`,`pageno`),
+  ADD KEY `mdl_assieditcmnt_gra_ix` (`gradeid`);
+
+--
+-- Indices de la tabla `mdl_assignfeedback_editpdf_quick`
+--
+ALTER TABLE `mdl_assignfeedback_editpdf_quick`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assieditquic_use_ix` (`userid`);
+
+--
+-- Indices de la tabla `mdl_assignfeedback_file`
+--
+ALTER TABLE `mdl_assignfeedback_file`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assifile_ass2_ix` (`assignment`),
+  ADD KEY `mdl_assifile_gra_ix` (`grade`);
+
+--
+-- Indices de la tabla `mdl_assignment`
+--
+ALTER TABLE `mdl_assignment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assi_cou2_ix` (`course`);
+
+--
+-- Indices de la tabla `mdl_assignment_submissions`
+--
+ALTER TABLE `mdl_assignment_submissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assisubm_use2_ix` (`userid`),
+  ADD KEY `mdl_assisubm_mai_ix` (`mailed`),
+  ADD KEY `mdl_assisubm_tim_ix` (`timemarked`),
+  ADD KEY `mdl_assisubm_ass2_ix` (`assignment`);
+
+--
+-- Indices de la tabla `mdl_assignment_upgrade`
+--
+ALTER TABLE `mdl_assignment_upgrade`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assiupgr_old_ix` (`oldcmid`),
+  ADD KEY `mdl_assiupgr_old2_ix` (`oldinstance`);
+
+--
+-- Indices de la tabla `mdl_assignsubmission_file`
+--
+ALTER TABLE `mdl_assignsubmission_file`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assifile_ass_ix` (`assignment`),
+  ADD KEY `mdl_assifile_sub_ix` (`submission`);
+
+--
+-- Indices de la tabla `mdl_assignsubmission_onlinetext`
+--
+ALTER TABLE `mdl_assignsubmission_onlinetext`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assionli_ass_ix` (`assignment`),
+  ADD KEY `mdl_assionli_sub_ix` (`submission`);
+
+--
+-- Indices de la tabla `mdl_assign_grades`
+--
+ALTER TABLE `mdl_assign_grades`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `mdl_assigrad_assuseatt_uix` (`assignment`,`userid`,`attemptnumber`),
+  ADD KEY `mdl_assigrad_use_ix` (`userid`),
+  ADD KEY `mdl_assigrad_att_ix` (`attemptnumber`),
+  ADD KEY `mdl_assigrad_ass_ix` (`assignment`);
+
+--
+-- Indices de la tabla `mdl_assign_plugin_config`
+--
+ALTER TABLE `mdl_assign_plugin_config`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assiplugconf_plu_ix` (`plugin`),
+  ADD KEY `mdl_assiplugconf_sub_ix` (`subtype`),
+  ADD KEY `mdl_assiplugconf_nam_ix` (`name`),
+  ADD KEY `mdl_assiplugconf_ass_ix` (`assignment`);
+
+--
+-- Indices de la tabla `mdl_assign_submission`
+--
+ALTER TABLE `mdl_assign_submission`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `mdl_assisubm_assusegroatt_uix` (`assignment`,`userid`,`groupid`,`attemptnumber`),
+  ADD KEY `mdl_assisubm_use_ix` (`userid`),
+  ADD KEY `mdl_assisubm_att_ix` (`attemptnumber`),
+  ADD KEY `mdl_assisubm_ass_ix` (`assignment`);
+
+--
+-- Indices de la tabla `mdl_assign_user_flags`
+--
+ALTER TABLE `mdl_assign_user_flags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assiuserflag_mai_ix` (`mailed`),
+  ADD KEY `mdl_assiuserflag_use_ix` (`userid`),
+  ADD KEY `mdl_assiuserflag_ass_ix` (`assignment`);
+
+--
+-- Indices de la tabla `mdl_assign_user_mapping`
+--
+ALTER TABLE `mdl_assign_user_mapping`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_assiusermapp_ass_ix` (`assignment`),
+  ADD KEY `mdl_assiusermapp_use_ix` (`userid`);
+
+--
+-- Indices de la tabla `mdl_files`
+--
+ALTER TABLE `mdl_files`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `mdl_file_pat_uix` (`pathnamehash`),
+  ADD KEY `mdl_file_comfilconite_ix` (`component`,`filearea`,`contextid`,`itemid`),
+  ADD KEY `mdl_file_con_ix` (`contenthash`),
+  ADD KEY `mdl_file_con2_ix` (`contextid`),
+  ADD KEY `mdl_file_use_ix` (`userid`),
+  ADD KEY `mdl_file_ref_ix` (`referencefileid`);
+
+--
+-- Indices de la tabla `mdl_grade_grades`
+--
+ALTER TABLE `mdl_grade_grades`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `mdl_gradgrad_useite_uix` (`userid`,`itemid`),
+  ADD KEY `mdl_gradgrad_locloc_ix` (`locked`,`locktime`),
+  ADD KEY `mdl_gradgrad_ite_ix` (`itemid`),
+  ADD KEY `mdl_gradgrad_use_ix` (`userid`),
+  ADD KEY `mdl_gradgrad_raw_ix` (`rawscaleid`),
+  ADD KEY `mdl_gradgrad_use2_ix` (`usermodified`);
+
+--
+-- Indices de la tabla `mdl_message`
+--
+ALTER TABLE `mdl_message`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_mess_use_ix` (`useridfrom`),
+  ADD KEY `mdl_mess_use2_ix` (`useridto`);
+
+--
+-- Indices de la tabla `mdl_message_read`
+--
+ALTER TABLE `mdl_message_read`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mdl_messread_use_ix` (`useridfrom`),
+  ADD KEY `mdl_messread_use2_ix` (`useridto`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `mdl_assign`
+--
+ALTER TABLE `mdl_assign`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignfeedback_comments`
+--
+ALTER TABLE `mdl_assignfeedback_comments`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignfeedback_editpdf_annot`
+--
+ALTER TABLE `mdl_assignfeedback_editpdf_annot`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignfeedback_editpdf_cmnt`
+--
+ALTER TABLE `mdl_assignfeedback_editpdf_cmnt`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignfeedback_editpdf_quick`
+--
+ALTER TABLE `mdl_assignfeedback_editpdf_quick`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignfeedback_file`
+--
+ALTER TABLE `mdl_assignfeedback_file`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignment`
+--
+ALTER TABLE `mdl_assignment`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignment_submissions`
+--
+ALTER TABLE `mdl_assignment_submissions`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignment_upgrade`
+--
+ALTER TABLE `mdl_assignment_upgrade`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignsubmission_file`
+--
+ALTER TABLE `mdl_assignsubmission_file`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assignsubmission_onlinetext`
+--
+ALTER TABLE `mdl_assignsubmission_onlinetext`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assign_grades`
+--
+ALTER TABLE `mdl_assign_grades`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assign_plugin_config`
+--
+ALTER TABLE `mdl_assign_plugin_config`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=627;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assign_submission`
+--
+ALTER TABLE `mdl_assign_submission`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assign_user_flags`
+--
+ALTER TABLE `mdl_assign_user_flags`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `mdl_assign_user_mapping`
+--
+ALTER TABLE `mdl_assign_user_mapping`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=98;
+--
+-- AUTO_INCREMENT de la tabla `mdl_files`
+--
+ALTER TABLE `mdl_files`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=159;
+--
+-- AUTO_INCREMENT de la tabla `mdl_grade_grades`
+--
+ALTER TABLE `mdl_grade_grades`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT de la tabla `mdl_message`
+--
+ALTER TABLE `mdl_message`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
+--
+-- AUTO_INCREMENT de la tabla `mdl_message_read`
+--
+ALTER TABLE `mdl_message_read`
+  MODIFY `id` bigint(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
